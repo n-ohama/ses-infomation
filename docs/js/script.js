@@ -49,7 +49,7 @@ if(document.documentElement.lang.includes('ja' || 'ja-jp' || 'ja-JP')) {
   new ScrollHint('.js-scrollable', {
     applyToParents: true,
     i18n: {
-      scrollable: 'touch scroll'
+      scrollable: 'You can scroll'
     }
   });
 }
