@@ -47,6 +47,17 @@
                     <li class="navi_item"><a href="#faq">FAQ</a></li>
                 </ul>
             </nav>
+            <div class="languageSwitcher_wrapper">
+                <select name="lang_choice_1" id="lang_choice_1" class="languageSwitcher">
+                    <option value="/index.html" lang="ja" selected="selected">Japanese</option>
+                    <option value="/en/index.html" lang="en-US">English</option>
+                </select>
+                <script type="text/javascript">
+                //<![CDATA[
+                document.getElementById( "lang_choice_1" ).addEventListener( "change", function ( event ) { location.href = event.currentTarget.value; } );
+                //]]>
+                </script>
+            </div>
             <a class="header_contact" target="_blank" href="https://risktaker.notion.site/34ad48d4c8d14aafa86999c70f52de7a">お問い合わせ</a>
         </div>
     </header>
