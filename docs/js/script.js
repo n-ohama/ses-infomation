@@ -38,9 +38,19 @@ $('a[href*="#"]').on('click', function () {
 })();
 
 // table scroll hint
-new ScrollHint('.js-scrollable', {
-  applyToParents: true,
-  i18n: {
-    scrollable: 'スクロールできます'
-  }
-});
+if(document.documentElement.lang.includes('ja' || 'ja-jp' || 'ja-JP')) {
+  new ScrollHint('.js-scrollable', {
+    applyToParents: true,
+    i18n: {
+      scrollable: 'スクロールできます'
+    }
+  });
+} else {
+  new ScrollHint('.js-scrollable', {
+    applyToParents: true,
+    i18n: {
+      scrollable: 'touch scroll'
+    }
+  });
+}
+
