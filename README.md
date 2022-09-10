@@ -9,5 +9,3 @@ npm install -g http-server
 
 http-server ./docs
 ```
-
-変更しました

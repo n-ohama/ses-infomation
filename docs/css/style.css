@@ -565,6 +565,7 @@ select.languageSwitcher option{
   border-radius: 50%;
   overflow: hidden;
   width: 200px;
+  height: 200px;
   margin-bottom: 16px;
 }
 .sec-work_person-item_name{
