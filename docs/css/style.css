@@ -694,6 +694,46 @@ select.languageSwitcher option{
 .faq_item-row_body.faq_item-row_body_question{
   font-weight: 500;
 }
+.section_head-company{
+  margin-bottom: 70px;
+}
+.sec-company_flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1215px;
+  margin: 0 auto;
+}
+.sec-company_list{
+  width: 45%;
+  min-width: 400px;
+}
+.sec-company_item{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #D0D0D0;
+  font-size: 24px;
+  padding-top: 40px;
+  padding-bottom: 16px;
+}
+.sec-company_item:first-child{
+  padding-top: 0;
+}
+.sec-company_item_title{
+  font-weight: 500;
+  width: 82px;
+  margin-right: 20px;
+}
+.sec-company_item_text{
+  color: #565656;
+  width: 342px;
+}
+.sec-company_logo{
+  width: 44%;
+}
+.sec-company_logo img{
+  width: 100%;
+}
 
 
 
@@ -1086,6 +1126,30 @@ select.languageSwitcher option{
     font-size: 16px;
     margin-top: 3px;
   }
+  .section_head-company{
+    margin-bottom: 60px;
+  }
+  .sec-company_flex{
+    flex-direction: column;
+  }
+  .sec-company_list{
+    width: 100%;
+    min-width: auto;
+  }
+  .sec-company_item{
+    padding: 8px 0;
+    font-size: 16px;
+  }
+  .sec-company_item_title{
+    width: 60px;
+    margin-right: 80px;
+  }
+  .sec-company_item_text{
+    width: calc(100% - 140px);
+  }
+  .sec-company_logo{
+    display: none;
+  }
 }
 /* ========================================
 英語表示のみの修正CSS
@@ -1104,6 +1168,16 @@ select.languageSwitcher option{
 :lang(en) .achievement_business{
   line-height: 1.2;
 }
+:lang(en) .sec-company_list{
+  min-width: 480px;
+}
+:lang(en) .sec-company_item_title{
+  width: 40%;
+  margin-right: 5%;
+}
+:lang(en) .sec-company_item_text{
+  width: 55%;
+}
 @media screen and (max-width:1098px){
   :lang(en) .sec-feature_list::before{
     bottom: -16%;
@@ -1121,5 +1195,8 @@ select.languageSwitcher option{
   }
   :lang(en) .btn{
     padding: 14px 50px;
+  }
+  :lang(en) .sec-company_list{
+    min-width: auto;
   }
 }
