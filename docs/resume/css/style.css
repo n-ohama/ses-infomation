@@ -26,6 +26,10 @@
   --color_green-vivid: #39A207;
   --color_blue-vivid: #146CE0;
   --color_red-vivid: #E32A2A;
+  --color_blue-position: #0C0489;
+  --color_pink-position: #B404C3;
+  --color_orange-position: #D16400;
+  --color_green-position: #3CB502;
 }
 html {
   overflow: auto;
@@ -87,6 +91,18 @@ a:focus {
 }
 .bgc_red-vivid{
   background-color: var(--color_red-vivid);
+}
+.bgc_blue-position{
+  background-color: var(--color_blue-position);
+}
+.bgc_pink-position{
+  background-color: var(--color_pink-position);
+}
+.bgc_orange-position{
+  background-color: var(--color_orange-position);
+}
+.bgc_green-position{
+  background-color: var(--color_green-position);
 }
 .textC_purple{
   color: var(--color_purple-vivid);
@@ -253,6 +269,7 @@ List
 .filter_inner{
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 10px 15px;
   margin: 0 auto;
   width: 90%;
@@ -264,6 +281,7 @@ List
   padding-left: 23px;
   font-weight: 500;
   margin-right: 24px;
+  white-space: nowrap;
 }
 .filter_title::before{
   position: absolute;
@@ -278,7 +296,6 @@ List
 .filter_colWrap{
   display: flex;
   align-items: center;
-  width: calc(100% - 127px);
 }
 .filter_col{
   position: relative;
@@ -299,9 +316,9 @@ List
 .filter_col:nth-of-type(5){
   width: 174px;
 }
-.filter_col:nth-of-type(6){
+/* .filter_col:nth-of-type(6){
   width: 208px;
-}
+} */
 .filter_col::before{
   position: absolute;
   content: "";
@@ -323,6 +340,9 @@ List
 }
 .filter_col:first-of-type select{
   border-radius: 8px 0 0 8px;
+}
+.filter_col:last-of-type select{
+  border-radius: 0 8px 8px 0;
 }
 .filter-col-has_rangeSlide{
   border: 1px solid #B9C7DB;
@@ -503,6 +523,11 @@ List
   filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.16));
   align-self: flex-start;
 }
+.badge_list-hasPositon .badge_item{
+  color: #fff;
+  font-weight: 700;
+  filter: none;
+}
 .card_title_sub{
   font-size: 18px;
   font-weight: 500;
@@ -642,6 +667,7 @@ Modal
 .modal_post video{
   width: 680px;
   max-width: 80%;
+  margin-top: 8px;
 }
 .modal_footer{
   padding: 0 8%;
@@ -829,9 +855,12 @@ Modal
   .filter_col:first-of-type select{
     border-radius: 8px;
   }
-  .filter-col-has_rangeSlide{
+  .filter_col:last-of-type select {
     border-radius: 8px;
   }
+  /* .filter-col-has_rangeSlide{
+    border-radius: 8px;
+  } */
   .filter_btn{
     position: fixed;
     display: block;
