@@ -326,7 +326,7 @@ List
   width: 12px;
   height: 13px;
   right: 13px;
-  top: 19px;
+  top: 42px;
 }
 .filter_col select{
   border-color: #B9C7DB;
@@ -1063,4 +1063,12 @@ Modal
     background-color: #fff;
   }
 
+}
+
+  /* ==============================================
+  Filter
+  ============================================== */
+
+.is-hide {
+  display: none;
 }
