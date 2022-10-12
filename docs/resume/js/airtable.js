@@ -1,15 +1,20 @@
+// var xhr = new XMLHttpRequest();
+// xhr.open('POST', 'https://gsslab-website-api.vercel.app/api/get_all_resume');
+// xhr.addEventListener('load', onLoadFunc, false);
+// xhr.send(null);
+
 // $.ajax({
-//   url: 'https://gsslab-website-api.vercel.app/api/get_all_resume', //アクセスするURL
+//   url: ' https://gsslab-website-api.vercel.app/api/get_all_resume', //アクセスするURL
 //   type: 'post',         //post or get
 //   cache: false,        //cacheを使うか使わないかを設定
 //   dataType:'json',     //data type script・xmlDocument・jsonなど
 //   data:{},           //アクセスするときに必要なデータを記載
 // })
 
-// .done(function(response) {
+// .done(function(onLoadFunc) {
 //   //通信成功時の処理
 //   //成功したとき実行したいスクリプトを記載
-//   console.log(response);
+//   console.log(onLoadFunc);
 // })
 
 // .fail(function(xhr) {  
