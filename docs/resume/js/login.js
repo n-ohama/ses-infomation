@@ -9,55 +9,77 @@ function getLoginInfo() {
   return { email, password };
 }
 
+function setLoginInfo(e, pw) {
+  const LOGIN_EMAIL = 'GSS_LOGIN_EMAIL';
+  const LOGIN_PW = 'GSS_LOGIN_PASSWORD';
+  const email = localStorage.setItem(LOGIN_EMAIL, e);
+  const password = localStorage.setItem(LOGIN_PW, pw);
+
+  return { email, password };
+}
+
+function login(email, password, callback, error) {
+  $.ajax({
+    url: ' https://gsslab-website-api.vercel.app/api/login',
+    type: 'POST',
+    cache: false,
+    dataType: 'json',
+    data: { email, password },
+  })
+    .done((resumes) => {
+      console.log('Login Response', resumes);
+      setLoginInfo(email, password);
+      callback(resumes.data);
+    })
+    .fail((err) => {
+      console.log(err);
+      error(err);
+    });
+}
+
 createApp({
   data() {
     return {
-      email: 'Hello Vue!',
-      password: 'Hello Vue!',
+      email: '',
+      password: '',
       errorEmail: false,
       errorPassword: false,
       isShowLoginPage: false,
     };
   },
   created() {
-    let eye = document.querySelector('.js-eye');
-    if (eye) {
-      eye.addEventListener('click', function () {
-        if (this.previousElementSibling.getAttribute('type') === 'password') {
-          this.previousElementSibling.setAttribute('type', 'text');
-          this.classList.add('is_show');
-        } else {
-          this.previousElementSibling.setAttribute('type', 'password');
-          this.classList.remove('is_show');
-        }
-      });
-
-      console.log('count is: ' + this.count); // => "count is: 1"
-    }
-
-    setTimeout(() => {
-      this.isShowLoginPage = !this.isShowLoginPage;
-    }, 20000);
-
     const info = getLoginInfo();
 
     if (_.includes(info.email, '@')) {
-      $.ajax({
-        url: ' https://gsslab-website-api.vercel.app/api/login',
-        type: 'POST',
-        cache: false,
-        dataType: 'json',
-        data: info,
-      })
-        .done((resumes) => {
-          console.log('Ajax Response', resumes);
-        })
-        .fail((err) => {
-          // alert('ログインに失敗しました');
-          console.log(err);
-        });
+      this.isShowLoginPage = false;
+
+      login(
+        info.email,
+        info.password,
+        (resumes) => {
+          this.isShowLoginPage = false;
+        },
+        () => {
+          this.isShowLoginPage = true;
+        },
+      );
     } else {
       this.isShowLoginPage = true;
     }
+  },
+  methods: {
+    submitLogin() {
+      login(
+        this.email,
+        this.password,
+        (resumes) => {
+          this.isShowLoginPage = false;
+          console.log('Success to login', resumes);
+        },
+        () => {
+          alert('ユーザーID または パスワード が間違っています。');
+        },
+      );
+    },
   },
 }).mount('#app');

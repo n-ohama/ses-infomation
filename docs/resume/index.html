@@ -18,7 +18,10 @@
         </h1>
         <div class="header_right">
           <!-- <a href="" class="header_btn">閲覧履歴はこちら</a> -->
-          <a href="https://meeting.eeasy.jp/m.iwakabe/online" class="header_btn_reserve"
+          <a
+            href="https://meeting.eeasy.jp/m.iwakabe/online"
+            target="_blank"
+            class="header_btn_reserve"
             ><img src="img/icon_contact.svg" alt="" /><span>面談予約</span></a
           >
         </div>
@@ -151,7 +154,7 @@
     <div class="overlay js-overlay"></div>
 
     <div id="app">
-      <template v-if="!isShowLoginPage">
+      <template v-if="!!isShowLoginPage">
         <div
           class="p-login"
           style="
@@ -173,13 +176,14 @@
                 <div class="login_inputRow">
                   <label for="">
                     <span>ユーザーID</span>
+
                     <input
-                      type="text"
-                      name=""
+                      type="email"
+                      v-model="email"
                       placeholder="example@xxxx.com"
                       autocomplete="username"
                     />
-                    <span class="login_error">ユーザーIDを入力して下さい</span>
+                    <!-- <span class="login_error">ユーザーIDを入力して下さい</span> -->
                   </label>
                 </div>
 
@@ -189,18 +193,26 @@
                       <span>パスワード</span>
                       <input
                         type="password"
-                        name=""
+                        v-model="password"
                         id="eye"
                         autocomplete="current-password"
                       />
-                      <span class="js-eye swich_blind" style="top: 50px"></span>
-                      <span class="login_error">パスワードを入力して下さい</span>
+
+                      <!-- <span
+                        class="js-eye swich_blind"
+                        style="top: 50px"
+                        v-on:click="eyeClick"
+                      ></span> -->
+
+                      <!-- <span class="login_error">パスワードを入力して下さい</span> -->
                     </label>
                   </div>
                 </div>
               </div>
               <div class="login_btnWrap">
-                <span class="login_btn">ログイン</span>
+                <span class="login_btn" v-on:click="submitLogin" style="cursor: pointer"
+                  >ログイン</span
+                >
               </div>
             </form>
           </div>
