@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/nouislider.min.css">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/nouislider.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>GSSLAB 履歴書</title>
-    <meta name="description" content="">
-</head>
-<body>
-
+    <meta name="description" content="" />
+  </head>
+  <body>
     <header class="header">
-        <div class="header_inner">
-            <h1 class="logo">
-                <a href="/"><img src="img/logo.svg" alt="GSS LAB"></a>
-            </h1>
-            <div class="header_right">
-                <!-- <a href="" class="header_btn">閲覧履歴はこちら</a> -->
-                <a href="https://meeting.eeasy.jp/m.iwakabe/online" class="header_btn_reserve"><img src="img/icon_contact.svg" alt=""><span>面談予約</span></a>
-            </div>
+      <div class="header_inner">
+        <h1 class="logo">
+          <a href="/"><img src="img/logo.svg" alt="GSS LAB" /></a>
+        </h1>
+        <div class="header_right">
+          <!-- <a href="" class="header_btn">閲覧履歴はこちら</a> -->
+          <a href="https://meeting.eeasy.jp/m.iwakabe/online" class="header_btn_reserve"
+            ><img src="img/icon_contact.svg" alt="" /><span>面談予約</span></a
+          >
         </div>
+      </div>
     </header>
 
     <div class="filter js-filter">
-        <div class="filter_inner">
-            <p class="filter_title"><span class="pc">フィルター</span><span class="sp">検索条件</span></p>
-            <div class="filter_colWrap">
-                <div class="filter_col">
+      <div class="filter_inner">
+        <p class="filter_title">
+          <span class="pc">フィルター</span><span class="sp">検索条件</span>
+        </p>
+        <div class="filter_colWrap">
+          <!-- <div class="filter_col">
                     <label for="rank">ランク</label>
                     <select name="rank" id="0">
                         <option value="allRank" selected hidden>ランク</option>
@@ -44,21 +48,12 @@
                         <option value="trainee">トレーニー</option>
                         <option value="none">未決定</option>
                     </select>
-                </div>
-                <div class="filter_col">
-                    <label for="position">ポジション</label>
-                    <select name="position" id="1">
-                        <option value="allPosition" selected hidden>ポジション</option>
-                        <option value="allPosition">全て選択</option>
-                        <option value="frontEnd">フロントエンド</option>
-                        <option value="backEnd">バックエンド</option>
-                        <option value="fullStuck">フルスタック</option>
-                        <option value="appDeveloper">アプリデベロッパー</option>
-                        <option value="serverEngineer">サーバーエンジニア</option>
-                        <option value="securityEngineer">セキュリティエンジニア</option>
-                    </select>
-                </div>
-                <div class="filter_col">
+                </div> -->
+          <div class="filter_col">
+            <label for="position">ポジション</label>
+            <select name="position" id="position-filter"></select>
+          </div>
+          <!-- <div class="filter_col">
                     <label for="skill">スキル</label>
                     <select name="skill" id="2">
                         <option value="allSkill" selected hidden>スキル</option>
@@ -116,8 +111,8 @@
                         <option value="c">C - 標準レベル</option>
                         <option value="none">未確認</option>
                     </select>
-                </div>
-                <!-- <div class="filter_col filter-col-has_rangeSlide js-filter_col">
+                </div> -->
+          <!-- <div class="filter_col filter-col-has_rangeSlide js-filter_col">
                     月額料金
                     <div class="filter-col-has_rangeSlide_child">
                         <div class="rangeSlideWrap js-rangeslideWrap">
@@ -131,537 +126,104 @@
                         </div>
                     </div>
                 </div> -->
-            </div>
         </div>
-        <button class="filter_btn filter_btn-close js-filter_btn-close"><p class="filter_title">完了</p></button>
+      </div>
+      <button class="filter_btn filter_btn-close js-filter_btn-close">
+        <p class="filter_title">完了</p>
+      </button>
     </div>
-    <button class="filter_btn js-filter_btn-open"><p class="filter_title">フィルター</p></button>
+    <button class="filter_btn js-filter_btn-open">
+      <p class="filter_title">フィルター</p>
+    </button>
 
     <main>
-
-        <div class="content">
-            <div class="inner">
-                <div class="content_header">
-                    <p class="content_head_text">204名のエンジニアが見つかりました</p>
-                </div>
-                <ul class="content_body">
-                    <!-- data-card_num=にはindex番号が入ります。JSでモダールと連動させています -->
-                    <!-- <li class="card" data-js-num="1">
-                        <div class="card_header">
-                            <figure class="card_figure"><img src="" alt=""></figure>
-                            <div class="card_header_right">
-                                <h2 class="card_name"><span class="card_name_age"></span></h2>
-                                <div class="card_rank">
-                                    <img src="img/badge_gold.png" alt="gold">
-                                    <p class="card_rank_text"></p>
-                                </div>
-                                <p class="card_price"><span class="card_price_big"></span> / 月</p>
-                            </div>
-                        </div>
-                        <div class="card_body">
-                            <div class="card_body_top">
-                                <div class="badge_box">
-                                    <p class="badge_title">ポジション</p>
-                                    <ul class="badge_list badge_list-hasPositon">
-                                        <li class="badge_item bgc_pink-position">バックエンド</li>
-                                        <li class="badge_item bgc_blue-position">フロントエンド</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">スキル</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card_body_bottom">
-                                <h3 class="card_title_sub">経歴</h3>
-                                <p class="card_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolorum omnis itaque voluptatibus saepe numquam doloribus, animi deserunt eligendi ullam dignissimos repudiandae ratione in excepturi voluptate recusandae quae unde incidunt?</p>
-                            </div>
-                        </div>
-                    </li> -->
-                    <!-- <li class="card" data-js-num="2">
-                        <div class="card_header">
-                            <figure class="card_figure"><img src="img/thumb.jpg" alt=""></figure>
-                            <div class="card_header_right">
-                                <h2 class="card_name">2人目 <br><span class="card_name_age">(24歳)</span></h2>
-                                <div class="card_rank">
-                                    <img src="img/badge_gold.png" alt="gold">
-                                    <p class="card_rank_text">テックリード+</p>
-                                </div>
-                                <p class="card_price"><span class="card_price_big">50万円</span> / 月</p>
-                            </div>
-                        </div>
-                        <div class="card_body">
-                            <div class="card_body_top">
-                                <div class="badge_box">
-                                    <p class="badge_title">ポジション</p>
-                                    <ul class="badge_list badge_list-hasPositon">
-                                        <li class="badge_item bgc_pink-position">バックエンド</li>
-                                        <li class="badge_item bgc_blue-position">フロントエンド</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">スキル</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card_body_bottom">
-                                <h3 class="card_title_sub">経歴</h3>
-                                <p class="card_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolorum omnis itaque voluptatibus saepe numquam doloribus, animi deserunt eligendi ullam dignissimos repudiandae ratione in excepturi voluptate recusandae quae unde incidunt?</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="card" data-js-num="3">
-                        <div class="card_header">
-                            <figure class="card_figure"><img src="img/thumb.jpg" alt=""></figure>
-                            <div class="card_header_right">
-                                <h2 class="card_name">3人目 <br><span class="card_name_age">(24歳)</span></h2>
-                                <div class="card_rank">
-                                    <img src="img/badge_gold.png" alt="gold">
-                                    <p class="card_rank_text">テックリード+</p>
-                                </div>
-                                <p class="card_price"><span class="card_price_big">50万円</span> / 月</p>
-                            </div>
-                        </div>
-                        <div class="card_body">
-                            <div class="card_body_top">
-                                <div class="badge_box">
-                                    <p class="badge_title">ポジション</p>
-                                    <ul class="badge_list badge_list-hasPositon">
-                                        <li class="badge_item bgc_pink-position">バックエンド</li>
-                                        <li class="badge_item bgc_blue-position">フロントエンド</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">スキル</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card_body_bottom">
-                                <h3 class="card_title_sub">経歴</h3>
-                                <p class="card_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolorum omnis itaque voluptatibus saepe numquam doloribus, animi deserunt eligendi ullam dignissimos repudiandae ratione in excepturi voluptate recusandae quae unde incidunt?</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="card" data-js-num="4">
-                        <div class="card_header">
-                            <figure class="card_figure"><img src="img/thumb.jpg" alt=""></figure>
-                            <div class="card_header_right">
-                                <h2 class="card_name">4人目 <br><span class="card_name_age">(24歳)</span></h2>
-                                <div class="card_rank">
-                                    <img src="img/badge_gold.png" alt="gold">
-                                    <p class="card_rank_text">テックリード+</p>
-                                </div>
-                                <p class="card_price"><span class="card_price_big">50万円</span> / 月</p>
-                            </div>
-                        </div>
-                        <div class="card_body">
-                            <div class="card_body_top">
-                                <div class="badge_box">
-                                    <p class="badge_title">ポジション</p>
-                                    <ul class="badge_list badge_list-hasPositon">
-                                        <li class="badge_item bgc_pink-position">バックエンド</li>
-                                        <li class="badge_item bgc_blue-position">フロントエンド</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">スキル</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card_body_bottom">
-                                <h3 class="card_title_sub">経歴</h3>
-                                <p class="card_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolorum omnis itaque voluptatibus saepe numquam doloribus, animi deserunt eligendi ullam dignissimos repudiandae ratione in excepturi voluptate recusandae quae unde incidunt?</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="card" data-js-num="5">
-                        <div class="card_header">
-                            <figure class="card_figure"><img src="img/thumb.jpg" alt=""></figure>
-                            <div class="card_header_right">
-                                <h2 class="card_name">3人目 <br><span class="card_name_age">(24歳)</span></h2>
-                                <div class="card_rank">
-                                    <img src="img/badge_gold.png" alt="gold">
-                                    <p class="card_rank_text">テックリード+</p>
-                                </div>
-                                <p class="card_price"><span class="card_price_big">50万円</span> / 月</p>
-                            </div>
-                        </div>
-                        <div class="card_body">
-                            <div class="card_body_top">
-                                <div class="badge_box">
-                                    <p class="badge_title">ポジション</p>
-                                    <ul class="badge_list badge_list-hasPositon">
-                                        <li class="badge_item bgc_pink-position">バックエンド</li>
-                                        <li class="badge_item bgc_blue-position">フロントエンド</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">スキル</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card_body_bottom">
-                                <h3 class="card_title_sub">経歴</h3>
-                                <p class="card_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolorum omnis itaque voluptatibus saepe numquam doloribus, animi deserunt eligendi ullam dignissimos repudiandae ratione in excepturi voluptate recusandae quae unde incidunt?</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="card" data-js-num="6">
-                        <div class="card_header">
-                            <figure class="card_figure"><img src="img/thumb.jpg" alt=""></figure>
-                            <div class="card_header_right">
-                                <h2 class="card_name">4人目 <br><span class="card_name_age">(24歳)</span></h2>
-                                <div class="card_rank">
-                                    <img src="img/badge_gold.png" alt="gold">
-                                    <p class="card_rank_text">テックリード+</p>
-                                </div>
-                                <p class="card_price"><span class="card_price_big">50万円</span> / 月</p>
-                            </div>
-                        </div>
-                        <div class="card_body">
-                            <div class="card_body_top">
-                                <div class="badge_box">
-                                    <p class="badge_title">ポジション</p>
-                                    <ul class="badge_list badge_list-hasPositon">
-                                        <li class="badge_item bgc_pink-position">バックエンド</li>
-                                        <li class="badge_item bgc_blue-position">フロントエンド</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">スキル</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card_body_bottom">
-                                <h3 class="card_title_sub">経歴</h3>
-                                <p class="card_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius dolorum omnis itaque voluptatibus saepe numquam doloribus, animi deserunt eligendi ullam dignissimos repudiandae ratione in excepturi voluptate recusandae quae unde incidunt?</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div> -->
-
-        <div class="modal js-modal_1">
-            <div class="modal_inner">
-                <div class="modal_content">
-                    <header class="modal_header">
-                        <figure class="modal_figure"><img src="img/thumb.jpg" alt=""></figure>
-                        <div class="modal_header_right">
-                            <div class="modal_header_sp">
-                                <p class="modal_name">Raymond Cabangal<span class="modal_name_age"> (24歳)</span></p>
-                                <div class="modal_meta">
-                                    <div class="modal_meta_box">
-                                        <img src="img/badge_gold.png" alt="gold">
-                                        <p class="modal_meta_text">テックリード+</p>
-                                    </div>
-                                    <div class="modal_meta_box">
-                                        <img src="img/icon_area.svg" alt="">
-                                        <p class="modal_meta_text">フィリピン</p>
-                                    </div>
-                                    <p class="modal_price"><span class="modal_price_big"><span class="pc">ご契約金額：</span>50万円</span> / 月</p>
-                                </div>
-                            </div>
-                            <div class="modal_badge">
-                                <div class="badge_box">
-                                    <p class="badge_title">ポジション</p>
-                                    <ul class="badge_list badge_list-hasPositon">
-                                        <li class="badge_item bgc_blue-position">フロントエンド</li>
-                                        <li class="badge_item bgc_pink-position">バックエンド</li>
-                                        <li class="badge_item bgc_orange-position">フルスタック</li>
-                                        <li class="badge_item bgc_green-position">アプリデベロッパー</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">スキル</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                        <li class="badge_item bgc_green">HTML</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">フレームワーク</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                        <li class="badge_item bgc_pink">Nextjs</li>
-                                        <li class="badge_item bgc_orange">Nuxtjs</li>
-                                        <li class="badge_item bgc_green">Vue</li>
-                                        <li class="badge_item bgc_skyblue">React</li>
-                                        <li class="badge_item bgc_yellow">Express</li>
-                                        <li class="badge_item bgc_red">Ruby on Rails</li>
-                                        <li class="badge_item bgc_blue">ReactNative</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </header>
-                    <div class="modal_body">
-
-                        <!-- modal_postWrapは今後の拡張性で追加しています -->
-                        <div class="modal_postWrap">
-                            <p class="modal_title_sub">経歴</p>
-
-                            <!-- modal_post直下にCMS機能が入るイメージ -->
-                            <div class="modal_post">
-                                <p>経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます経歴がこちらに記載されます経歴がこちらに記載されます。<br>経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます経歴<br>経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます経歴</p>
-                            </div>
-                            <p class="modal_title_sub">面接動画</p>
-
-                            <!-- modal_post直下にCMS機能が入るイメージ -->
-                            <div class="modal_post">
-                                <div class="center">
-                                    <video src="modal_movie.mp4" playsinline controls></video>
-                                </div>
-                            </div>
-                            <p class="modal_title_sub">GSSからのコメント</p>
-                            
-                            <!-- modal_post直下にCMS機能が入るイメージ -->
-                            <div class="modal_post">
-                                <p>経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます経歴がこちらに記載されます経歴がこちらに記載されます。<br>経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます経歴</p>
-
-                                <!-- コードテスト結果のランクテキストカラーは、CSSを4種用意しています。 -->
-                                <div class="modal_post_code">コードテスト結果：<span class="textC_purple">A - Great</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <footer class="modal_footer">
-                        <div class="modal_btnWrap">
-                            <a class="modal_btn">面談予約</a>
-                            <a class="modal_btn modal_btn-close js-close">閉じる</a>
-                        </div>
-                    </footer>
-                </div>
-            </div>
+      <div class="content">
+        <div class="inner">
+          <div class="content_header">
+            <p class="content_head_text" id="number-of-list">取得中...</p>
+          </div>
+          <ul class="content_body" id="render-resumes"></ul>
+          <div id="render-modals"></div>
         </div>
-        <div class="modal js-modal_2">
-            <div class="modal_inner">
-                <div class="modal_content">
-                    <header class="modal_header">
-                        <figure class="modal_figure"><img src="img/thumb.jpg" alt=""></figure>
-                        <div class="modal_header_right">
-                            <div class="modal_header_sp">
-                                <p class="modal_name">2個目モーダル<span class="modal_name_age"> (24歳)</span></p>
-                                <div class="modal_meta">
-                                    <div class="modal_meta_box">
-                                        <img src="img/badge_gold.png" alt="gold">
-                                        <p class="modal_meta_text">テックリード+</p>
-                                    </div>
-                                    <div class="modal_meta_box">
-                                        <img src="img/icon_area.svg" alt="">
-                                        <p class="modal_meta_text">フィリピン</p>
-                                    </div>
-                                    <p class="modal_price"><span class="modal_price_big"><span class="pc">ご契約金額：</span>50万円</span> / 月</p>
-                                </div>
-                            </div>
-                            <div class="modal_badge">
-                                <div class="badge_box">
-                                    <p class="badge_title">ポジション</p>
-                                    <ul class="badge_list badge_list-hasPositon">
-                                        <li class="badge_item bgc_blue-position">フロントエンド</li>
-                                        <li class="badge_item bgc_pink-position">バックエンド</li>
-                                        <li class="badge_item bgc_orange-position">フルスタック</li>
-                                        <li class="badge_item bgc_green-position">アプリデベロッパー</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">スキル</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                        <li class="badge_item bgc_green">HTML</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">フレームワーク</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                        <li class="badge_item bgc_pink">Nextjs</li>
-                                        <li class="badge_item bgc_orange">Nuxtjs</li>
-                                        <li class="badge_item bgc_green">Vue</li>
-                                        <li class="badge_item bgc_skyblue">React</li>
-                                        <li class="badge_item bgc_yellow">Express</li>
-                                        <li class="badge_item bgc_red">Ruby on Rails</li>
-                                        <li class="badge_item bgc_blue">ReactNative</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </header>
-                    <div class="modal_body">
-
-                        <!-- modal_postWrapは今後の拡張性で追加しています -->
-                        <div class="modal_postWrap">
-                            <p class="modal_title_sub">経歴</p>
-
-                            <!-- modal_post直下にCMS機能が入るイメージ -->
-                            <div class="modal_post">
-                                <p>2個目モーダル2個目モーダル<br>2個目モーダル2個目モーダル<br>2個目モーダル</p>
-                            </div>
-                            <p class="modal_title_sub">面接動画</p>
-
-                            <!-- modal_post直下にCMS機能が入るイメージ -->
-                            <div class="modal_post">
-                                <div class="center">
-                                    <video src="modal_movie.mp4" playsinline controls></video>
-                                </div>
-                            </div>
-                            <p class="modal_title_sub">GSSからのコメント</p>
-                            
-                            <!-- modal_post直下にCMS機能が入るイメージ -->
-                            <div class="modal_post">
-                                <p>2個目モーダル2個目モーダル2個目モーダル2個目モーダル<br>2個目モーダル2個目モーダル2個目モーダル</p>
-
-                                <!-- コードテスト結果のランクテキストカラーは、CSSを4種用意しています。 -->
-                                <div class="modal_post_code">コードテスト結果：<span class="textC_purple">A - Great</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <footer class="modal_footer">
-                        <div class="modal_btnWrap">
-                            <a class="modal_btn">面談予約</a>
-                            <a class="modal_btn modal_btn-close js-close">閉じる</a>
-                        </div>
-                    </footer>
-                </div>
-            </div>
-        </div>
-        <div class="modal js-modal_3">
-            <div class="modal_inner">
-                <div class="modal_content">
-                    <header class="modal_header">
-                        <figure class="modal_figure"><img src="img/thumb.jpg" alt=""></figure>
-                        <div class="modal_header_right">
-                            <div class="modal_header_sp">
-                                <p class="modal_name">3333個目モーダル<span class="modal_name_age"> (24歳)</span></p>
-                                <div class="modal_meta">
-                                    <div class="modal_meta_box">
-                                        <img src="img/badge_gold.png" alt="gold">
-                                        <p class="modal_meta_text">テックリード+</p>
-                                    </div>
-                                    <div class="modal_meta_box">
-                                        <img src="img/icon_area.svg" alt="">
-                                        <p class="modal_meta_text">フィリピン</p>
-                                    </div>
-                                    <p class="modal_price"><span class="modal_price_big"><span class="pc">ご契約金額：</span>50万円</span> / 月</p>
-                                </div>
-                            </div>
-                            <div class="modal_badge">
-                                <div class="badge_box">
-                                    <p class="badge_title">ポジション</p>
-                                    <ul class="badge_list badge_list-hasPositon">
-                                        <li class="badge_item bgc_blue-position">フロントエンド</li>
-                                        <li class="badge_item bgc_pink-position">バックエンド</li>
-                                        <li class="badge_item bgc_orange-position">フルスタック</li>
-                                        <li class="badge_item bgc_green-position">アプリデベロッパー</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">スキル</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                        <li class="badge_item bgc_green">HTML</li>
-                                    </ul>
-                                </div>
-                                <div class="badge_box">
-                                    <p class="badge_title">フレームワーク</p>
-                                    <ul class="badge_list">
-                                        <li class="badge_item bgc_pink">PHP</li>
-                                        <li class="badge_item bgc_orange">Nodesjs</li>
-                                        <li class="badge_item bgc_skyblue">Python</li>
-                                        <li class="badge_item bgc_pink">Nextjs</li>
-                                        <li class="badge_item bgc_orange">Nuxtjs</li>
-                                        <li class="badge_item bgc_green">Vue</li>
-                                        <li class="badge_item bgc_skyblue">React</li>
-                                        <li class="badge_item bgc_yellow">Express</li>
-                                        <li class="badge_item bgc_red">Ruby on Rails</li>
-                                        <li class="badge_item bgc_blue">ReactNative</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </header>
-                    <div class="modal_body">
-
-                        <!-- modal_postWrapは今後の拡張性で追加しています -->
-                        <div class="modal_postWrap">
-                            <p class="modal_title_sub">経歴</p>
-
-                            <!-- modal_post直下にCMS機能が入るイメージ -->
-                            <div class="modal_post">
-                                <p>3333個目モーダル3333個目モーダル<br>3333個目モーダル3333個目モーダル<br>3333個目モーダル</p>
-                            </div>
-                            <p class="modal_title_sub">面接動画</p>
-
-                            <!-- modal_post直下にCMS機能が入るイメージ -->
-                            <div class="modal_post">
-                                <div class="center">
-                                    <video src="modal_movie.mp4" playsinline controls></video>
-                                </div>
-                            </div>
-                            <p class="modal_title_sub">GSSからのコメント</p>
-                            
-                            <!-- modal_post直下にCMS機能が入るイメージ -->
-                            <div class="modal_post">
-                                <p>3333個目モーダル3333個目モーダル3333個目モーダル3333個目モーダル<br>3333個目モーダル3333個目モーダル3333個目モーダル</p>
-
-                                <!-- コードテスト結果のランクテキストカラーは、CSSを4種用意しています。 -->
-                                <div class="modal_post_code">コードテスト結果：<span class="textC_purple">A - Great</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <footer class="modal_footer">
-                        <div class="modal_btnWrap">
-                            <a class="modal_btn">面談予約</a>
-                            <a class="modal_btn modal_btn-close js-close">閉じる</a>
-                        </div>
-                    </footer>
-                </div>
-            </div>
-        </div>
+      </div>
     </main>
 
-
     <div class="overlay js-overlay"></div>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <div id="app">
+      <template v-if="!isShowLoginPage">
+        <div
+          class="p-login"
+          style="
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: whitesmoke;
+          "
+        >
+          <header class="login_header">
+            <p class="login_header_logo"><img src="img/logo.svg" alt="GSS LAB" /></p>
+          </header>
+
+          <div class="login_content">
+            <form class="login_form">
+              <div class="login_inputRowWrap">
+                <div class="login_inputRow">
+                  <label for="">
+                    <span>ユーザーID</span>
+                    <input
+                      type="text"
+                      name=""
+                      placeholder="example@xxxx.com"
+                      autocomplete="username"
+                    />
+                    <span class="login_error">ユーザーIDを入力して下さい</span>
+                  </label>
+                </div>
+
+                <div class="login_inputRow">
+                  <div class="login_password">
+                    <label for="">
+                      <span>パスワード</span>
+                      <input
+                        type="password"
+                        name=""
+                        id="eye"
+                        autocomplete="current-password"
+                      />
+                      <span class="js-eye swich_blind" style="top: 50px"></span>
+                      <span class="login_error">パスワードを入力して下さい</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="login_btnWrap">
+                <span class="login_btn">ログイン</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
     <script src="js/wNumb.js"></script>
     <script src="js/nouislider.js"></script>
     <script src="js/script.js"></script>
     <script src="js/airtable.js"></script>
-    <script src="js/filterSearch.js"></script>
-</body>
+    <script src="js/login.js"></script>
+  </body>
 </html>
-
-

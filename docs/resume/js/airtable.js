@@ -1,36 +1,153 @@
-$.ajax({
-  url: ' https://gsslab-website-api.vercel.app/api/get_all_resume', //アクセスするURL
-  type: 'post',        //post or get
-  cache: false,        //cacheを使うか使わないかを設定
-  dataType:'json',     //data type script・xmlDocument・jsonなど
-  data:{},             //アクセスするときに必要なデータを記載
-})
+function toggleModal() {
+  // モーダル用
+  const elems = document.querySelectorAll('.card');
 
-.done(function (response) {
-  //通信成功時の処理
-  //成功したとき実行したいスクリプトを記載
-  // console.log(response);
-  const jsonData = JSON.stringify(response);
+  elems.forEach((elem, index) => {
+    // 各モーダルをクリックするとオーバーレイと、モーダルが表示
+    elem.addEventListener('click', function () {
+      let modalTarget = this.dataset.jsNum;
+      let modal = document.querySelector('.js-modal_' + modalTarget);
+      let overlay = document.querySelector('.js-overlay');
+      let modalClose = document.querySelectorAll('.js-close')[index];
+      modal.classList.toggle('is_show');
+      overlay.classList.toggle('is_show');
+      modalClose.classList.toggle('is_show');
 
-  const objData = JSON.parse(jsonData);
+      // オーバーレイをクリックすると、オーバーレイとモーダルのis_showクラスを除去
+      overlay.addEventListener('click', () => {
+        modal.classList.remove('is_show');
+        overlay.classList.remove('is_show');
+      });
+      // 閉じるボタンをクリックすると、オーバーレイとモーダルのis_showクラスを除去
+      modalClose.addEventListener('click', () => {
+        modal.classList.remove('is_show');
+        overlay.classList.remove('is_show');
+      });
+    });
+  });
+}
 
-  const response_id = objData.data;
+function renderModals(resumes) {
+  $('#render-modals').html('');
 
-  console.log(response_id);
+  $(resumes).each((index, resume) => {
+    resume.salary = _.floor(resume.Salary / 10000, 1);
+    resume.picture = resume.Picture[0].url;
+    resume.skills = _.reduce(
+      resume.Skills,
+      (m, skill, key) => {
+        return m + `<li class="badge_item bgc_orange">${skill}</li>`;
+      },
+      '',
+    );
 
+    resume.fw = _.reduce(
+      resume.Framework,
+      (m, fw, key) => {
+        return m + `<li class="badge_item bgc_pink">${fw}</li>`;
+      },
+      '',
+    );
 
-  $(response_id).each((index, val) => { $('.content_body').append(
-    `
-    <li class="card" data-js-num="1">
+    $('#render-modals').append(`
+    
+    <div class="modal js-modal_${index + 1}">
+    <div class="modal_inner">
+      <div class="modal_content">
+          <header class="modal_header">
+            <figure class="modal_figure"><img src="${resume.picture}" alt=""></figure>
+            <div class="modal_header_right">
+                <div class="modal_header_sp">
+                    <p class="modal_name">
+                      ${resume.Name}<span class="modal_name_age"> (${resume.Age}歳)</span>
+                    </p>
+                    <div class="modal_meta">
+                        <div class="modal_meta_box">
+                            <img src="img/badge_gold.png" alt="gold">
+                            <p class="modal_meta_text">${resume.Rank}</p>
+                        </div>
+                        <div class="modal_meta_box">
+                            <img src="img/icon_area.svg" alt="">
+                            <p class="modal_meta_text">フィリピン}</p>
+                        </div>
+                        <p class="modal_price"><span class="modal_price_big">
+                          <span class="pc">ご契約金額：</span>
+                          ${resume.salary}万円</span> / 月
+                        </p>
+                    </div>
+                </div>
+                <div class="modal_badge">
+                    <div class="badge_box">
+                      <p class="badge_title">ポジション</p>
+                      <ul class="badge_list badge_list-hasPositon">
+                        <li class="badge_item bgc_blue-position">${resume.Position}</li>
+                      </ul>
+                    </div>
+                    <div class="badge_box">
+                      <p class="badge_title">スキル</p>
+                      <ul class="badge_list">${resume.skills}</ul>
+                    </div>
+                    <div class="badge_box">
+                      <p class="badge_title">フレームワーク</p>
+                      <ul class="badge_list">${resume.fw}</ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="modal_body">
+            <!-- modal_postWrapは今後の拡張性で追加しています -->
+            <div class="modal_postWrap">
+                <p class="modal_title_sub">経歴</p>
+                <div class="modal_post">
+                    <pre>${resume.WorkHistory}</pre>
+                </div>
+            </div>
+        </div>
+
+        <footer class="modal_footer">
+            <div class="modal_btnWrap">
+                <a class="modal_btn modal_btn-close js-close">閉じる</a>
+            </div>
+        </footer>
+    </div>
+    </div>
+    
+    `);
+  });
+}
+
+function renderResumes(resumes) {
+  $('#render-resumes').html('');
+
+  $('#number-of-list').text(_.size(resumes) + ' 名のエンジニアが見つかりました');
+
+  $(resumes).each((index, resume) => {
+    resume.salary = _.floor(resume.Salary / 10000, 1);
+    resume.picture = resume.Picture[0].url;
+    resume.skils = _.reduce(
+      resume.Skills,
+      (m, skill, key) => {
+        return m + `<li class="badge_item bgc_orange">${skill}</li>`;
+      },
+      '',
+    );
+
+    $('#render-resumes').append(`
+    <li class="card" data-js-num="${index + 1}">
     <div class="card_header">
-        <figure class="card_figure"><img src="${val.Picture[0].url}" alt=""></figure>
+        <figure class="card_figure">
+          <img src="${resume.picture}" alt="">
+        </figure>
         <div class="card_header_right">
-            <h2 class="card_name">${val.Name}<br><span class="card_name_age">(${val.Age}歳)</span></h2>
+            <h2 class="card_name">
+              ${resume.Name}<br><span class="card_name_age">(${resume.Age}歳)</span>
+            </h2>
             <div class="card_rank">
                 <img src="img/badge_gold.png" alt="gold">
-                <p class="card_rank_text">${val.Rank}</p>
+                <p class="card_rank_text">${resume.Rank}</p>
             </div>
-            <p class="card_price"><span class="card_price_big">${val.Salary / 10000}万円</span> / 月</p>
+            <p class="card_price">
+              <span class="card_price_big">${resume.salary}万円</span> / 月</p>
         </div>
     </div>
     <div class="card_body">
@@ -38,297 +155,61 @@ $.ajax({
             <div class="badge_box">
                 <p class="badge_title">ポジション</p>
                 <ul class="badge_list badge_list-hasPositon">
-                    ${val.Position}
-                    <li class="badge_item bgc_orange"></li>
+                    <li class="badge_item bgc_blue-position">${resume.Position}</li>
                 </ul>
             </div>
             <div class="badge_box">
                 <p class="badge_title">スキル</p>
-                <ul class="badge_list">
-                    ${val.Skills}
-                    <li class="badge_item bgc_orange">Nodesjs</li>
-                    <li class="badge_item bgc_skyblue">Python</li>
-                </ul>
+                <ul class="badge_list">${resume.skils}</ul>
             </div>
         </div>
         <div class="card_body_bottom">
             <h3 class="card_title_sub">経歴</h3>
-            <p class="card_desc">${val.WorkHistory}</p>
+            <p class="card_desc">${resume.WorkHistory}</p>
         </div>
     </div>
-    </li>   
-    `
-  );
-});
+    </li>
+    `);
+  });
 
+  renderModals(resumes);
 
-$(response_id).each((index, val) => { $('.modal js-modal_1').append(
-  `
-  <div class="modal_inner">
-      <div class="modal_content">
-          <header class="modal_header">
-            <figure class="modal_figure"><img src="${val.Picture[0].url}" alt=""></figure>
-            <div class="modal_header_right">
-                <div class="modal_header_sp">
-                    <p class="modal_name">${val.Name}<span class="modal_name_age"> (${val.Age}歳)</span></p>
-                    <div class="modal_meta">
-                        <div class="modal_meta_box">
-                            <img src="img/badge_gold.png" alt="gold">
-                            <p class="modal_meta_text">${val.Rank}</p>
-                        </div>
-                        <div class="modal_meta_box">
-                            <img src="img/icon_area.svg" alt="">
-                            <p class="modal_meta_text">${val.WorkLocation}</p>
-                        </div>
-                        <p class="modal_price"><span class="modal_price_big"><span class="pc">ご契約金額：</span>${val.Salary / 10000}万円</span> / 月</p>
-                    </div>
-                </div>
-                <div class="modal_badge">
-                    <div class="badge_box">
-                      <p class="badge_title">ポジション</p>
-                      <ul class="badge_list badge_list-hasPositon">
-                        ${val.Position}
-                        <li class="badge_item bgc_blue-position">フロントエンド</li>
-                      </ul>
-                    </div>
-                    <div class="badge_box">
-                      <p class="badge_title">スキル</p>
-                      <ul class="badge_list">
-                        ${val.Skills}
-                        <li class="badge_item bgc_pink">PHP</li>
-                      </ul>
-                    </div>
-                    <div class="badge_box">
-                      <p class="badge_title">フレームワーク</p>
-                      <ul class="badge_list">
-                        ${val.Framework}
-                        <li class="badge_item bgc_pink">PHP</li>
-                      </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <div class="modal_body">
+  toggleModal();
+}
 
-            <!-- modal_postWrapは今後の拡張性で追加しています -->
-            <div class="modal_postWrap">
-                <p class="modal_title_sub">経歴</p>
-
-                <!-- modal_post直下にCMS機能が入るイメージ -->
-                <div class="modal_post">
-                    <p>経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます経歴がこちらに記載されます経歴がこちらに記載されます。<br>経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます経歴<br>経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます経歴</p>
-                </div>
-                <p class="modal_title_sub">面接動画</p>
-
-                <!-- modal_post直下にCMS機能が入るイメージ -->
-                <div class="modal_post">
-                    <div class="center">
-                        <video src="modal_movie.mp4" playsinline controls></video>
-                    </div>
-                </div>
-                <p class="modal_title_sub">GSSからのコメント</p>
-                
-                <!-- modal_post直下にCMS機能が入るイメージ -->
-                <div class="modal_post">
-                    <p>経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます経歴がこちらに記載されます経歴がこちらに記載されます。<br>経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます。経歴がこちらに記載されます経歴</p>
-                    <!-- コードテスト結果のランクテキストカラーは、CSSを4種用意しています。 -->
-                    <div class="modal_post_code">コードテスト結果：<span class="textC_purple">A - Great</span></div>
-                </div>
-            </div>
-        </div>
-        <footer class="modal_footer">
-            <div class="modal_btnWrap">
-                <a class="modal_btn">面談予約</a>
-                <a class="modal_btn modal_btn-close js-close">閉じる</a>
-            </div>
-        </footer>
-    </div>
-`
-);
-});
-
-
-
-// //情報をDOM操作でAPIで取得した全てのリスト表示
-//   $(response_id).each((index, val) => { $('.test_resume').append('<li>' + val.Name + val.Age + val.Rank + val.WorkLocation + val.Salary + val.Position + val.Skills + val.Framework + val.WorkHistory + val.CodeExam);
-// });
-
-
-
-
-// //1人単位の格納された全ての情報を出力-1
-// $.each(objData[0].data, function(index, value) {
-//     console.log(value);
-// })
-
-//1人単位の格納された全ての情報を出力-2
-// $.each( objData[0].data, function( index, value ) {
-//   console.log( "index", index, "value", value );
-// });
-
-// //1人単位のスキルのみを表示
-// $.each(objData[0].data,
-//   function(index, val) {
-//       console.log(' スキル：' + val.Skills);
-//   }
-// );
-
-
-
+$.ajax({
+  url: ' https://gsslab-website-api.vercel.app/api/get_all_resume',
+  type: 'POST',
+  cache: false,
+  dataType: 'json',
+  data: {},
 })
+  .done((resumes) => {
+    console.log('Ajax Response', resumes);
 
-.fail(function(xhr) {  
-  //通信失敗時の処理
-  //失敗したときに実行したいスクリプトを記載
-  // console.log(xhr);
-})
+    const positions = _.uniq(_.map(resumes.data, 'Position'));
+    const positionTags = _.reduce(
+      positions,
+      (m, p, key) => {
+        return m + `<option value="${p}">${p}</option>`;
+      },
+      '<option value="all" selected>全てのポジション</option>',
+    );
+    $('#position-filter').append(positionTags);
 
-// .always(function(xhr, msg) { 
-//   //通信完了時の処理
-//   //結果に関わらず実行したいスクリプトを記載
-//   // console.log(xhr, msg);
-// });   
+    renderResumes(resumes.data);
 
+    $('#position-filter').change((e) => {
+      console.log(e.target.value);
 
+      if (e.target.value === 'all') return renderResumes(resumes.data);
 
-
-
-//   const json_data_airtable = [
-//     {
-//       "message": "Success to get_all_resume",
-//       "data": [
-//         {
-//           "Rank": "ジュニア+",
-//           "Framework": [
-//             "Nuxtjs",
-//             "React",
-//             "ReactNative"
-//           ],
-//           "Name": "Erika Piason1",
-//           "Skills": [
-//             "Nodejs",
-//             "HTML"
-//           ],
-//           "Position": "バックエンド"
-//         },
-//         {
-//           "Rank": "シニア",
-//           "Framework": [
-//             "Nuxtjs",
-//             "React",
-//             "ReactNative"
-//           ],
-//           "Name": "ABC Taro",
-//           "Skills": [
-//             "Nodejs",
-//             "HTML"
-//           ],
-//           "Position": "バックエンド"
-//         },
-//         {
-//           "Rank": "シニア+",
-//           "Framework": [
-//             "Nuxtjs",
-//             "React",
-//             "ReactNative"
-//           ],
-//           "Name": "Erika Piason4",
-//           "Skills": [
-//             "Nodejs",
-//             "HTML"
-//           ],
-//           "Position": "フルスタック"
-//         },
-//         {
-//           "Rank": "ジュニア",
-//           "Framework": [
-//             "Nuxtjs",
-//             "React",
-//             "ReactNative"
-//           ],
-//           "Name": "Erika Piason55",
-//           "Skills": [
-//             "Nodejs",
-//             "HTML"
-//           ],
-//           "Position": "アプリディベロッパー"
-//         },
-//         {
-//           "Rank": "ミドル",
-//           "Framework": [
-//             "Nuxtjs",
-//             "React",
-//             "ReactNative"
-//           ],
-//           "Name": "Daiki Shirakawa",
-//           "Skills": [
-//             "Nodejs",
-//             "HTML"
-//           ],
-//           "Position": "フルスタック"
-//         },
-//         {
-//           "Rank": "ジュニア+",
-//           "Framework": [
-//             "Nuxtjs",
-//             "React",
-//             "ReactNative"
-//           ],
-//           "Name": "Erika Piason2",
-//           "Skills": [
-//             "Nodejs",
-//             "HTML"
-//           ],
-//           "Position": "アプリディベロッパー"
-//         },
-//         {
-//           "Rank": "ミドル+",
-//           "Framework": [
-//             "Nuxtjs",
-//             "React",
-//             "ReactNative"
-//           ],
-//           "Name": "Erika Piason3",
-//           "Skills": [
-//             "Nodejs",
-//             "HTML"
-//           ],
-//           "Position": "フルスタック"
-//         },
-//         {
-//           "Rank": "ジュニア",
-//           "Framework": [
-//             "Nuxtjs",
-//             "React",
-//             "ReactNative"
-//           ],
-//           "Name": "Erika Piason",
-//           "Skills": [
-//             "Nodejs",
-//             "HTML"
-//           ],
-//           "Position": "フロントエンド"
-//         },
-//         {
-//           "Rank": "テックリード",
-//           "Framework": [
-//             "Nuxtjs",
-//             "React",
-//             "ReactNative"
-//           ],
-//           "Name": "Mark Andoru",
-//           "Skills": [
-//             "Nodejs",
-//             "HTML"
-//           ],
-//           "Position": "アプリディベロッパー"
-//         }
-//       ],
-//       "error": null
-//     }
-// ];
-
-// const jsonData1 = JSON.stringify(json_data_airtable);
-
-// const objData1 = JSON.parse(jsonData1);
-// console.log(objData1[0].data);
+      const list = _.filter(resumes.data, { Position: e.target.value });
+      renderResumes(list);
+    });
+  })
+  .fail((err) => {
+    alert('履歴書データの取得に失敗しました');
+    renderResumes([]);
+    console.log(err);
+  });
