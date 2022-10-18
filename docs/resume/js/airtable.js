@@ -109,6 +109,25 @@ function renderModals(resumes) {
                 <div class="modal_post">
                     <pre>${resume.WorkHistory}</pre>
                 </div>
+
+                <p class="modal_title_sub">面接動画</p>
+  
+                  <!-- modal_post直下にCMS機能が入るイメージ -->
+                  <div class="modal_post">
+                      <div class="center">
+                          <video src="modal_movie.mp4" playsinline controls></video>
+                      </div>
+                  </div>
+                  <p class="modal_title_sub">GSSからのコメント</p>
+                  
+                  <!-- modal_post直下にCMS機能が入るイメージ -->
+                  <div class="modal_post">
+                      <p>${resume.Comment}</p>
+                      <!-- コードテスト結果のランクテキストカラーは、CSSを4種用意しています。 -->
+                      <div class="modal_post_code">コードテスト結果：<span class="textC_purple">${
+                        resume.CodeExam
+                      }</span></div>
+                  </div>
             </div>
         </div>
 
