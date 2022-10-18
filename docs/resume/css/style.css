@@ -30,6 +30,36 @@
   --color_pink-position: #b404c3;
   --color_orange-position: #d16400;
   --color_green-position: #3cb502;
+
+  --color_light_2: #cbe4f9;
+  --color_light_3: #cdf5f6;
+  --color_light_4: #eff9da;
+  --color_light_5: #f9ebdf;
+  --color_light_6: #f9d8d6;
+  --color_light_7: #d6cdea;
+  --color_light_8: #ebecf0;
+  --color_light_9: #bebebe;
+  --color_light_10: #e7e1f7;
+  --color_light_11: #fae9f4;
+  --color_light_12: #fcf3ee;
+  --color_light_13: #ffe8d9;
+  --color_light_14: #d3c7b4;
+  --color_light_15: #d1ead9;
+
+  --color_dark_2: #078af6;
+  --color_dark_3: #02afb2;
+  --color_dark_4: #5c8700;
+  --color_dark_5: #f37200;
+  --color_dark_6: #ef0f04;
+  --color_dark_7: #9671e7;
+  --color_dark_8: #3f4973;
+  --color_dark_9: #484646;
+  --color_dark_10: #4f4a5f;
+  --color_dark_11: #dc0591;
+  --color_dark_12: #431d08;
+  --color_dark_13: #9b6743;
+  --color_dark_14: #b0781e;
+  --color_dark_15: #2c3830;
 }
 html {
   overflow: auto;
@@ -116,6 +146,95 @@ a:focus {
 .textC_red {
   color: var(--color_red-vivid);
 }
+
+/* Badge Light Colors */
+.badge_light_2 {
+  background-color: var(--color_light_2);
+}
+.badge_light_3 {
+  background-color: var(--color_light_3);
+}
+.badge_light_4 {
+  background-color: var(--color_light_4);
+}
+.badge_light_5 {
+  background-color: var(--color_light_5);
+}
+.badge_light_6 {
+  background-color: var(--color_light_6);
+}
+.badge_light_7 {
+  background-color: var(--color_light_7);
+}
+.badge_light_8 {
+  background-color: var(--color_light_8);
+}
+.badge_light_9 {
+  background-color: var(--color_light_9);
+}
+.badge_light_10 {
+  background-color: var(--color_light_10);
+}
+.badge_light_11 {
+  background-color: var(--color_light_11);
+}
+.badge_light_12 {
+  background-color: var(--color_light_12);
+}
+.badge_light_13 {
+  background-color: var(--color_light_13);
+}
+.badge_light_14 {
+  background-color: var(--color_light_14);
+}
+.badge_light_15 {
+  background-color: var(--color_light_15);
+}
+
+/* Badge Dark Colors */
+.badge_dark_2 {
+  background-color: var(--color_dark_2);
+}
+.badge_dark_3 {
+  background-color: var(--color_dark_3);
+}
+.badge_dark_4 {
+  background-color: var(--color_dark_4);
+}
+.badge_dark_5 {
+  background-color: var(--color_dark_5);
+}
+.badge_dark_6 {
+  background-color: var(--color_dark_6);
+}
+.badge_dark_7 {
+  background-color: var(--color_dark_7);
+}
+.badge_dark_8 {
+  background-color: var(--color_dark_8);
+}
+.badge_dark_9 {
+  background-color: var(--color_dark_9);
+}
+.badge_dark_10 {
+  background-color: var(--color_dark_10);
+}
+.badge_dark_11 {
+  background-color: var(--color_dark_11);
+}
+.badge_dark_12 {
+  background-color: var(--color_dark_12);
+}
+.badge_dark_13 {
+  background-color: var(--color_dark_13);
+}
+.badge_dark_14 {
+  background-color: var(--color_dark_14);
+}
+.badge_dark_15 {
+  background-color: var(--color_dark_15);
+}
+
 /* ==============================================
 Login
 ============================================== */
@@ -594,14 +713,14 @@ Modal
   display: flex;
   margin-bottom: 40px;
 }
-.modal_header_close_btn{
+.modal_header_close_btn {
   position: absolute;
   top: 12px;
   right: -12px;
   width: 76px;
   height: 76px;
   border-radius: 50%;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   background-image: url(../img/icon_modal_header_close_btn.svg);
   background-size: 36px 36px;
   background-position: center center;
@@ -988,7 +1107,7 @@ Modal
     flex-wrap: wrap;
     margin-bottom: 0;
   }
-  .modal_header_close_btn{
+  .modal_header_close_btn {
     width: 38px;
     height: 38px;
     background-size: 18px 18px;

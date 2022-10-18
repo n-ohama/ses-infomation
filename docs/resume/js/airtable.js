@@ -9,7 +9,9 @@ function toggleModal() {
       let modal = document.querySelector('.js-modal_' + modalTarget);
       let overlay = document.querySelector('.js-overlay');
       let modalClose = document.querySelectorAll('.js-close')[index];
-      let modalHeadercloseBtn = document.querySelectorAll('.js-modalHeadercloseBtn')[index];
+      let modalHeadercloseBtn = document.querySelectorAll('.js-modalHeadercloseBtn')[
+        index
+      ];
       modal.classList.toggle('is_show');
       overlay.classList.toggle('is_show');
       modalClose.classList.toggle('is_show');
@@ -43,7 +45,9 @@ function renderModals(resumes) {
     resume.skills = _.reduce(
       resume.Skills,
       (m, skill, key) => {
-        return m + `<li class="badge_item ${badgeColor[skill.length]}">${skill}</li>`;
+        return (
+          m + `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
+        );
       },
       '',
     );
@@ -51,7 +55,7 @@ function renderModals(resumes) {
     resume.fw = _.reduce(
       resume.Framework,
       (m, fw, key) => {
-        return m + `<li class="badge_item ${badgeColor[fw.length]}">${fw}</li>`;
+        return m + `<li class="badge_item ${badgeLightColor[fw.length]}">${fw}</li>`;
       },
       '',
     );
@@ -88,9 +92,9 @@ function renderModals(resumes) {
                     <div class="badge_box">
                       <p class="badge_title">ポジション</p>
                       <ul class="badge_list badge_list-hasPositon">
-                        <li class="badge_item ${badgeColor[resume.Position.length]}">${
-      resume.Position
-    }</li>
+                        <li class="badge_item ${
+                          badgeDarkColor[resume.Position.length]
+                        }">${resume.Position}</li>
                       </ul>
                     </div>
                     <div class="badge_box">
@@ -156,7 +160,9 @@ function renderResumes(resumes) {
     resume.skils = _.reduce(
       resume.Skills,
       (m, skill, key) => {
-        return m + `<li class="badge_item ${badgeColor[skill.length]}">${skill}</li>`;
+        return (
+          m + `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
+        );
       },
       '',
     );
@@ -184,7 +190,7 @@ function renderResumes(resumes) {
             <div class="badge_box">
                 <p class="badge_title">ポジション</p>
                 <ul class="badge_list badge_list-hasPositon">
-                    <li class="badge_item ${badgeColor[resume.Position.length]}">${
+                    <li class="badge_item ${badgeDarkColor[resume.Position.length]}">${
       resume.Position
     }</li>
                 </ul>
