@@ -1,19 +1,39 @@
 /**
- * Badge color based on character counts
+ * Badge light color based on character counts
  */
-const badgeColor = {
-  2: 'bgc_pink',
-  3: 'bgc_orange',
-  4: 'bgc_green',
-  5: 'bgc_skyblue',
-  6: 'bgc_yellow',
-  7: 'bgc_red',
-  8: 'bgc_blue',
-  9: 'bgc_purple',
-  10: 'bgc_purple-vivid',
-  11: 'bgc_green-vivid',
-  12: 'bgc_blue-vivid',
-  13: 'bgc_red-vivid',
-  14: 'bgc_blue-position',
-  15: 'bgc_pink-position',
+const badgeLightColor = {
+  2: 'badge_light_2',
+  3: 'badge_light_3',
+  4: 'badge_light_4',
+  5: 'badge_light_5',
+  6: 'badge_light_6',
+  7: 'badge_light_7',
+  8: 'badge_light_8',
+  9: 'badge_light_9',
+  10: 'badge_light_10',
+  11: 'badge_light_11',
+  12: 'badge_light_12',
+  13: 'badge_light_13',
+  14: 'badge_light_14',
+  15: 'badge_light_15',
+};
+
+/**
+ * Badge dark color based on character counts
+ */
+const badgeDarkColor = {
+  2: 'badge_dark_2',
+  3: 'badge_dark_3',
+  4: 'badge_dark_4',
+  5: 'badge_dark_5',
+  6: 'badge_dark_6',
+  7: 'badge_dark_7',
+  8: 'badge_dark_8',
+  9: 'badge_dark_9',
+  10: 'badge_dark_10',
+  11: 'badge_dark_11',
+  12: 'badge_dark_12',
+  13: 'badge_dark_13',
+  14: 'badge_dark_14',
+  15: 'badge_dark_15',
 };
