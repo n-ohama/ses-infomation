@@ -609,14 +609,10 @@ Modal
   border: none;
 }
 .modal_figure {
-  width: 385px;
-  height: 385px;
+  width: 25%;
   min-width: 320px;
-}
-.modal_figure img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  padding-left: 8%;
+  margin-right: 2%;
 }
 .modal_header_right {
   padding: 24px 20px 0 20px;
@@ -1003,6 +999,8 @@ Modal
     width: 115px;
     height: 115px;
     min-width: 100px;
+    padding-left: 16px;
+    margin-right: 0;
   }
   .modal_header_right {
     display: contents;
