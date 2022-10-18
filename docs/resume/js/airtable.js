@@ -177,6 +177,39 @@ function renderResumes(resumes) {
   toggleModal();
 }
 
+/**
+ * Filter condition for position, skills and rank
+ *
+ * @param {Object} resumes
+ * @param {String} positionValue
+ * @param {String} rankValue
+ * @param {String} skillValue
+ *
+ * @returns array
+ */
+const resumeFilterCondition = (resumes, positionValue, rankValue, skillValue) => {
+  let filterValues = {};
+  let resumeList = resumes;
+
+  if (rankValue !== 'all') {
+    Object.assign(filterValues, { Rank: rankValue });
+  }
+
+  if (positionValue !== 'all') {
+    Object.assign(filterValues, { Position: positionValue });
+  }
+
+  if (skillValue !== 'all') {
+    resumeList = _.filter(
+      resumeList,
+      (resume) =>
+        resume.Skills.includes(skillValue) || resume.Framework.includes(skillValue),
+    );
+  }
+
+  return _.filter(resumeList, filterValues);
+};
+
 $.ajax({
   url: ' https://gsslab-website-api.vercel.app/api/get_all_resume',
   type: 'POST',
@@ -192,9 +225,6 @@ $.ajax({
     const frameworks = _.uniq(_.map(resumes.data, 'Framework'));
     const rank = _.uniq(_.map(resumes.data, 'Rank'));
     const skillList = _.union(skills.flat(), frameworks.flat());
-
-    console.log('Skills', skillList);
-    console.log('Rank', rank);
 
     const positionTags = _.reduce(
       positions,
@@ -223,10 +253,6 @@ $.ajax({
     );
     $('#skill-filter').append(skillTags);
 
-    console.log('Position Val', $('#position-filter').val());
-    console.log('Skills Val', $('#skill-filter').val());
-    console.log('Rank Val', $('#rank-filter').val());
-
     renderResumes(resumes.data);
 
     $('#position-filter').change((e) => {
@@ -239,21 +265,12 @@ $.ajax({
       if (positionValue === 'all' && rankValue === 'all' && skillValue === 'all')
         return renderResumes(resumes.data);
 
-      let filterValues = {};
-
-      if (rankValue !== 'all') {
-        Object.assign(filterValues, { Rank: rankValue });
-      }
-
-      if (positionValue !== 'all') {
-        Object.assign(filterValues, { Position: positionValue });
-      }
-
-      if (skillValue !== 'all') {
-        Object.assign(filterValues, { Skill: skillValue });
-      }
-
-      const list = _.filter(resumes.data, filterValues);
+      const list = resumeFilterCondition(
+        resumes.data,
+        positionValue,
+        rankValue,
+        skillValue,
+      );
       renderResumes(list);
     });
 
@@ -267,21 +284,12 @@ $.ajax({
       if (positionValue === 'all' && rankValue === 'all' && skillValue === 'all')
         return renderResumes(resumes.data);
 
-      let filterValues = {};
-
-      if (rankValue !== 'all') {
-        Object.assign(filterValues, { Rank: rankValue });
-      }
-
-      if (positionValue !== 'all') {
-        Object.assign(filterValues, { Position: positionValue });
-      }
-
-      if (skillValue !== 'all') {
-        Object.assign(filterValues, { Skill: skillValue });
-      }
-
-      const list = _.filter(resumes.data, filterValues);
+      const list = resumeFilterCondition(
+        resumes.data,
+        positionValue,
+        rankValue,
+        skillValue,
+      );
       renderResumes(list);
     });
 
@@ -295,21 +303,12 @@ $.ajax({
       if (positionValue === 'all' && rankValue === 'all' && skillValue === 'all')
         return renderResumes(resumes.data);
 
-      let filterValues = {};
-
-      if (rankValue !== 'all') {
-        Object.assign(filterValues, { Rank: rankValue });
-      }
-
-      if (positionValue !== 'all') {
-        Object.assign(filterValues, { Position: positionValue });
-      }
-
-      if (skillValue !== 'all') {
-        Object.assign(filterValues, { Skill: skillValue });
-      }
-
-      const list = _.filter(resumes.data, filterValues);
+      const list = resumeFilterCondition(
+        resumes.data,
+        positionValue,
+        rankValue,
+        skillValue,
+      );
       renderResumes(list);
     });
   })
