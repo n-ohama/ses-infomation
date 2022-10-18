@@ -121,9 +121,7 @@ function renderModals(resumes) {
                   <!-- modal_post直下にCMS機能が入るイメージ -->
                   <div class="modal_post">
                       <div class="center">
-                          <video src="${
-                            resume.InterviewUrl
-                          }" playsinline controls></video>
+                          <video src="modal_movie.mp4" playsinline controls></video>
                       </div>
                   </div>
                   <p class="modal_title_sub">GSSからのコメント</p>
