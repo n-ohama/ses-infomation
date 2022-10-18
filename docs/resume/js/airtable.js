@@ -80,7 +80,7 @@ function renderModals(resumes) {
                         </div>
                         <div class="modal_meta_box">
                             <img src="img/icon_area.svg" alt="">
-                            <p class="modal_meta_text">フィリピン}</p>
+                            <p class="modal_meta_text">フィリピン</p>
                         </div>
                         <p class="modal_price"><span class="modal_price_big">
                           <span class="pc">ご契約金額：</span>
