@@ -188,6 +188,14 @@ $.ajax({
     console.log('Ajax Response', resumes);
 
     const positions = _.uniq(_.map(resumes.data, 'Position'));
+    const skills = _.uniq(_.map(resumes.data, 'Skills'));
+    const frameworks = _.uniq(_.map(resumes.data, 'Framework'));
+    const rank = _.uniq(_.map(resumes.data, 'Rank'));
+    const skillList = _.union(skills.flat(), frameworks.flat());
+
+    console.log('Skills', skillList);
+    console.log('Rank', rank);
+
     const positionTags = _.reduce(
       positions,
       (m, p, key) => {
@@ -197,14 +205,111 @@ $.ajax({
     );
     $('#position-filter').append(positionTags);
 
+    const rankTags = _.reduce(
+      rank,
+      (m, p, key) => {
+        return m + `<option value="${p}">${p}</option>`;
+      },
+      '<option value="all" selected>全てのランク</option>',
+    );
+    $('#rank-filter').append(rankTags);
+
+    const skillTags = _.reduce(
+      skillList,
+      (m, p, key) => {
+        return m + `<option value="${p}">${p}</option>`;
+      },
+      '<option value="all" selected>全てのスキル</option>',
+    );
+    $('#skill-filter').append(skillTags);
+
+    console.log('Position Val', $('#position-filter').val());
+    console.log('Skills Val', $('#skill-filter').val());
+    console.log('Rank Val', $('#rank-filter').val());
+
     renderResumes(resumes.data);
 
     $('#position-filter').change((e) => {
       console.log(e.target.value);
 
-      if (e.target.value === 'all') return renderResumes(resumes.data);
+      const positionValue = e.target.value;
+      const rankValue = $('#rank-filter').val();
+      const skillValue = $('#skill-filter').val();
 
-      const list = _.filter(resumes.data, { Position: e.target.value });
+      if (positionValue === 'all' && rankValue === 'all' && skillValue === 'all')
+        return renderResumes(resumes.data);
+
+      let filterValues = {};
+
+      if (rankValue !== 'all') {
+        Object.assign(filterValues, { Rank: rankValue });
+      }
+
+      if (positionValue !== 'all') {
+        Object.assign(filterValues, { Position: positionValue });
+      }
+
+      if (skillValue !== 'all') {
+        Object.assign(filterValues, { Skill: skillValue });
+      }
+
+      const list = _.filter(resumes.data, filterValues);
+      renderResumes(list);
+    });
+
+    $('#rank-filter').change((e) => {
+      console.log(e.target.value);
+
+      const rankValue = e.target.value;
+      const positionValue = $('#position-filter').val();
+      const skillValue = $('#skill-filter').val();
+
+      if (positionValue === 'all' && rankValue === 'all' && skillValue === 'all')
+        return renderResumes(resumes.data);
+
+      let filterValues = {};
+
+      if (rankValue !== 'all') {
+        Object.assign(filterValues, { Rank: rankValue });
+      }
+
+      if (positionValue !== 'all') {
+        Object.assign(filterValues, { Position: positionValue });
+      }
+
+      if (skillValue !== 'all') {
+        Object.assign(filterValues, { Skill: skillValue });
+      }
+
+      const list = _.filter(resumes.data, filterValues);
+      renderResumes(list);
+    });
+
+    $('#skill-filter').change((e) => {
+      console.log(e.target.value);
+
+      const skillValue = e.target.value;
+      const positionValue = $('#position-filter').val();
+      const rankValue = $('#rank-filter').val();
+
+      if (positionValue === 'all' && rankValue === 'all' && skillValue === 'all')
+        return renderResumes(resumes.data);
+
+      let filterValues = {};
+
+      if (rankValue !== 'all') {
+        Object.assign(filterValues, { Rank: rankValue });
+      }
+
+      if (positionValue !== 'all') {
+        Object.assign(filterValues, { Position: positionValue });
+      }
+
+      if (skillValue !== 'all') {
+        Object.assign(filterValues, { Skill: skillValue });
+      }
+
+      const list = _.filter(resumes.data, filterValues);
       renderResumes(list);
     });
   })
