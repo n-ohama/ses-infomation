@@ -1,3 +1,6 @@
+/**
+ * Badge color based on character counts
+ */
 const badgeColor = {
   2: 'bgc_pink',
   3: 'bgc_orange',
