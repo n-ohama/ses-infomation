@@ -9,9 +9,11 @@ function toggleModal() {
       let modal = document.querySelector('.js-modal_' + modalTarget);
       let overlay = document.querySelector('.js-overlay');
       let modalClose = document.querySelectorAll('.js-close')[index];
+      let modalHeadercloseBtn = document.querySelectorAll('.js-modalHeadercloseBtn')[index];
       modal.classList.toggle('is_show');
       overlay.classList.toggle('is_show');
       modalClose.classList.toggle('is_show');
+      modalHeadercloseBtn.classList.toggle('is_show');
 
       // オーバーレイをクリックすると、オーバーレイとモーダルのis_showクラスを除去
       overlay.addEventListener('click', () => {
@@ -20,6 +22,11 @@ function toggleModal() {
       });
       // 閉じるボタンをクリックすると、オーバーレイとモーダルのis_showクラスを除去
       modalClose.addEventListener('click', () => {
+        modal.classList.remove('is_show');
+        overlay.classList.remove('is_show');
+      });
+      // モーダルヘッダー閉じるボタンをクリックすると、オーバーレイとモーダルのis_showクラスを除去
+      modalHeadercloseBtn.addEventListener('click', () => {
         modal.classList.remove('is_show');
         overlay.classList.remove('is_show');
       });
@@ -55,6 +62,7 @@ function renderModals(resumes) {
     <div class="modal_inner">
       <div class="modal_content">
           <header class="modal_header">
+            <button class="modal_header_close_btn js-modalHeadercloseBtn"></button>
             <figure class="modal_figure"><img src="${resume.picture}" alt=""></figure>
             <div class="modal_header_right">
                 <div class="modal_header_sp">
