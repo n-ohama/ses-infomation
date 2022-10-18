@@ -80,7 +80,7 @@ function renderModals(resumes) {
                         </div>
                         <div class="modal_meta_box">
                             <img src="img/icon_area.svg" alt="">
-                            <p class="modal_meta_text">フィリピン}</p>
+                            <p class="modal_meta_text">フィリピン</p>
                         </div>
                         <p class="modal_price"><span class="modal_price_big">
                           <span class="pc">ご契約金額：</span>
@@ -121,7 +121,9 @@ function renderModals(resumes) {
                   <!-- modal_post直下にCMS機能が入るイメージ -->
                   <div class="modal_post">
                       <div class="center">
-                          <video src="modal_movie.mp4" playsinline controls></video>
+                          <video src="${
+                            resume.InterviewUrl
+                          }" playsinline controls></video>
                       </div>
                   </div>
                   <p class="modal_title_sub">GSSからのコメント</p>
