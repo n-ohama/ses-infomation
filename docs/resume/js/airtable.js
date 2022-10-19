@@ -93,7 +93,7 @@ function renderModals(resumes) {
                       <p class="badge_title">ポジション</p>
                       <ul class="badge_list badge_list-hasPositon">
                         <li class="badge_item ${
-                          badgeDarkColor[resume.Position.length]
+                          badgePositionTagColor[resume.Position]
                         }">${resume.Position}</li>
                       </ul>
                     </div>
@@ -190,7 +190,7 @@ function renderResumes(resumes) {
             <div class="badge_box">
                 <p class="badge_title">ポジション</p>
                 <ul class="badge_list badge_list-hasPositon">
-                    <li class="badge_item ${badgeDarkColor[resume.Position.length]}">${
+                    <li class="badge_item ${badgePositionTagColor[resume.Position]}">${
       resume.Position
     }</li>
                 </ul>
