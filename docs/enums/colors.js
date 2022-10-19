@@ -37,3 +37,16 @@ const badgeDarkColor = {
   14: 'badge_dark_14',
   15: 'badge_dark_15',
 };
+
+/**
+ * Badge position tag color
+ */
+const badgePositionTagColor = {
+  フロントエンド: 'badge_dark_2',
+  バックエンド: 'badge_dark_4',
+  フルスタック: 'badge_dark_6',
+  アプリデベロッパー: 'badge_dark_7',
+  ゲームデベロッパー: 'badge_dark_8',
+  サーバーエンジニア: 'badge_dark_9',
+  セキュリテイエンジニア: 'badge_dark_10',
+};
