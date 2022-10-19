@@ -9,9 +9,13 @@ function toggleModal() {
       let modal = document.querySelector('.js-modal_' + modalTarget);
       let overlay = document.querySelector('.js-overlay');
       let modalClose = document.querySelectorAll('.js-close')[index];
+      let modalHeadercloseBtn = document.querySelectorAll('.js-modalHeadercloseBtn')[
+        index
+      ];
       modal.classList.toggle('is_show');
       overlay.classList.toggle('is_show');
       modalClose.classList.toggle('is_show');
+      modalHeadercloseBtn.classList.toggle('is_show');
 
       // オーバーレイをクリックすると、オーバーレイとモーダルのis_showクラスを除去
       overlay.addEventListener('click', () => {
@@ -20,6 +24,11 @@ function toggleModal() {
       });
       // 閉じるボタンをクリックすると、オーバーレイとモーダルのis_showクラスを除去
       modalClose.addEventListener('click', () => {
+        modal.classList.remove('is_show');
+        overlay.classList.remove('is_show');
+      });
+      // モーダルヘッダー閉じるボタンをクリックすると、オーバーレイとモーダルのis_showクラスを除去
+      modalHeadercloseBtn.addEventListener('click', () => {
         modal.classList.remove('is_show');
         overlay.classList.remove('is_show');
       });
@@ -36,7 +45,9 @@ function renderModals(resumes) {
     resume.skills = _.reduce(
       resume.Skills,
       (m, skill, key) => {
-        return m + `<li class="badge_item bgc_orange">${skill}</li>`;
+        return (
+          m + `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
+        );
       },
       '',
     );
@@ -44,7 +55,7 @@ function renderModals(resumes) {
     resume.fw = _.reduce(
       resume.Framework,
       (m, fw, key) => {
-        return m + `<li class="badge_item bgc_pink">${fw}</li>`;
+        return m + `<li class="badge_item ${badgeLightColor[fw.length]}">${fw}</li>`;
       },
       '',
     );
@@ -55,6 +66,7 @@ function renderModals(resumes) {
     <div class="modal_inner">
       <div class="modal_content">
           <header class="modal_header">
+            <button class="modal_header_close_btn js-modalHeadercloseBtn"></button>
             <figure class="modal_figure"><img src="${resume.picture}" alt=""></figure>
             <div class="modal_header_right">
                 <div class="modal_header_sp">
@@ -68,7 +80,7 @@ function renderModals(resumes) {
                         </div>
                         <div class="modal_meta_box">
                             <img src="img/icon_area.svg" alt="">
-                            <p class="modal_meta_text">フィリピン}</p>
+                            <p class="modal_meta_text">フィリピン</p>
                         </div>
                         <p class="modal_price"><span class="modal_price_big">
                           <span class="pc">ご契約金額：</span>
@@ -80,7 +92,9 @@ function renderModals(resumes) {
                     <div class="badge_box">
                       <p class="badge_title">ポジション</p>
                       <ul class="badge_list badge_list-hasPositon">
-                        <li class="badge_item bgc_blue-position">${resume.Position}</li>
+                        <li class="badge_item ${
+                          badgeDarkColor[resume.Position.length]
+                        }">${resume.Position}</li>
                       </ul>
                     </div>
                     <div class="badge_box">
@@ -101,6 +115,25 @@ function renderModals(resumes) {
                 <div class="modal_post">
                     <pre>${resume.WorkHistory}</pre>
                 </div>
+
+                <p class="modal_title_sub">面接動画</p>
+  
+                  <!-- modal_post直下にCMS機能が入るイメージ -->
+                  <div class="modal_post">
+                      <div class="center">
+                          <video src="modal_movie.mp4" playsinline controls></video>
+                      </div>
+                  </div>
+                  <p class="modal_title_sub">GSSからのコメント</p>
+                  
+                  <!-- modal_post直下にCMS機能が入るイメージ -->
+                  <div class="modal_post">
+                      <p>${resume.Comment}</p>
+                      <!-- コードテスト結果のランクテキストカラーは、CSSを4種用意しています。 -->
+                      <div class="modal_post_code">コードテスト結果：<span class="textC_purple">${
+                        resume.CodeExam
+                      }</span></div>
+                  </div>
             </div>
         </div>
 
@@ -127,7 +160,9 @@ function renderResumes(resumes) {
     resume.skils = _.reduce(
       resume.Skills,
       (m, skill, key) => {
-        return m + `<li class="badge_item bgc_orange">${skill}</li>`;
+        return (
+          m + `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
+        );
       },
       '',
     );
@@ -155,7 +190,9 @@ function renderResumes(resumes) {
             <div class="badge_box">
                 <p class="badge_title">ポジション</p>
                 <ul class="badge_list badge_list-hasPositon">
-                    <li class="badge_item bgc_blue-position">${resume.Position}</li>
+                    <li class="badge_item ${badgeDarkColor[resume.Position.length]}">${
+      resume.Position
+    }</li>
                 </ul>
             </div>
             <div class="badge_box">

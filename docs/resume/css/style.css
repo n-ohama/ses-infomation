@@ -30,6 +30,36 @@
   --color_pink-position: #b404c3;
   --color_orange-position: #d16400;
   --color_green-position: #3cb502;
+  
+  --color_light_2: #cbe4f9;
+  --color_light_3: #cdf5f6;
+  --color_light_4: #eff9da;
+  --color_light_5: #f9ebdf;
+  --color_light_6: #f9d8d6;
+  --color_light_7: #d6cdea;
+  --color_light_8: #ebecf0;
+  --color_light_9: #bebebe;
+  --color_light_10: #e7e1f7;
+  --color_light_11: #fae9f4;
+  --color_light_12: #fcf3ee;
+  --color_light_13: #ffe8d9;
+  --color_light_14: #d3c7b4;
+  --color_light_15: #d1ead9;
+
+  --color_dark_2: #078af6;
+  --color_dark_3: #02afb2;
+  --color_dark_4: #5c8700;
+  --color_dark_5: #f37200;
+  --color_dark_6: #ef0f04;
+  --color_dark_7: #9671e7;
+  --color_dark_8: #3f4973;
+  --color_dark_9: #484646;
+  --color_dark_10: #4f4a5f;
+  --color_dark_11: #dc0591;
+  --color_dark_12: #431d08;
+  --color_dark_13: #9b6743;
+  --color_dark_14: #b0781e;
+  --color_dark_15: #2c3830;
 }
 html {
   overflow: auto;
@@ -59,7 +89,7 @@ a:focus {
 .bgc_pink {
   background-color: var(--color_pink);
 }
-. {
+.bgc_orange {
   background-color: var(--color_orange);
 }
 .bgc_green {
@@ -116,6 +146,95 @@ a:focus {
 .textC_red {
   color: var(--color_red-vivid);
 }
+
+/* Badge Light Colors */
+.badge_light_2 {
+  background-color: var(--color_light_2);
+}
+.badge_light_3 {
+  background-color: var(--color_light_3);
+}
+.badge_light_4 {
+  background-color: var(--color_light_4);
+}
+.badge_light_5 {
+  background-color: var(--color_light_5);
+}
+.badge_light_6 {
+  background-color: var(--color_light_6);
+}
+.badge_light_7 {
+  background-color: var(--color_light_7);
+}
+.badge_light_8 {
+  background-color: var(--color_light_8);
+}
+.badge_light_9 {
+  background-color: var(--color_light_9);
+}
+.badge_light_10 {
+  background-color: var(--color_light_10);
+}
+.badge_light_11 {
+  background-color: var(--color_light_11);
+}
+.badge_light_12 {
+  background-color: var(--color_light_12);
+}
+.badge_light_13 {
+  background-color: var(--color_light_13);
+}
+.badge_light_14 {
+  background-color: var(--color_light_14);
+}
+.badge_light_15 {
+  background-color: var(--color_light_15);
+}
+
+/* Badge Dark Colors */
+.badge_dark_2 {
+  background-color: var(--color_dark_2);
+}
+.badge_dark_3 {
+  background-color: var(--color_dark_3);
+}
+.badge_dark_4 {
+  background-color: var(--color_dark_4);
+}
+.badge_dark_5 {
+  background-color: var(--color_dark_5);
+}
+.badge_dark_6 {
+  background-color: var(--color_dark_6);
+}
+.badge_dark_7 {
+  background-color: var(--color_dark_7);
+}
+.badge_dark_8 {
+  background-color: var(--color_dark_8);
+}
+.badge_dark_9 {
+  background-color: var(--color_dark_9);
+}
+.badge_dark_10 {
+  background-color: var(--color_dark_10);
+}
+.badge_dark_11 {
+  background-color: var(--color_dark_11);
+}
+.badge_dark_12 {
+  background-color: var(--color_dark_12);
+}
+.badge_dark_13 {
+  background-color: var(--color_dark_13);
+}
+.badge_dark_14 {
+  background-color: var(--color_dark_14);
+}
+.badge_dark_15 {
+  background-color: var(--color_dark_15);
+}
+
 /* ==============================================
 Login
 ============================================== */
@@ -575,35 +694,49 @@ Modal
 }
 .modal_inner {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 1270px;
-  padding: 0 15px;
+  height: 100%;
+  min-height: 100vh;
   margin: 0 auto;
 }
 .modal_content {
-  max-height: 80vh;
   width: 100%;
+  height: 100%;
   background-color: #fff;
-  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
   overflow-y: scroll;
-  padding-bottom: 40px;
+  padding: 80px 7%;
 }
 .modal_header {
+  position: relative;
   display: flex;
   margin-bottom: 40px;
 }
+.modal_header_close_btn{
+  position: absolute;
+  top: 12px;
+  right: -12px;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background-color: #F5F5F5;
+  background-image: url(../img/icon_modal_header_close_btn.svg);
+  background-size: 36px 36px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: none;
+}
 .modal_figure {
-  width: 385px;
-  height: 385px;
-  min-width: 320px;
+  width: 300px;
+  padding-left: 8%;
+  margin-right: 2%;
+  margin-top: 12px;
 }
 .modal_header_right {
-  padding: 24px 20px 0 20px;
+  padding: 0 20px;
   align-items: start;
+  flex: 1;
 }
 .modal_name {
   font-size: 40px;
@@ -967,28 +1100,34 @@ Modal
   /* ==============================================
   Modal
   ============================================== */
-  .modal_inner {
-    width: 91.5%;
-    padding: 0;
-  }
   .modal_content {
-    padding-bottom: 24px;
+    padding: 60px 8.5% 100px;
   }
   .modal_header {
     flex-wrap: wrap;
     margin-bottom: 0;
   }
+  .modal_header_close_btn{
+    width: 38px;
+    height: 38px;
+    background-size: 18px 18px;
+    top: -29px;
+    right: -5px;
+  }
   .modal_figure {
     width: 115px;
     height: 115px;
     min-width: 100px;
+    padding-left: 16px;
+    margin-right: 0;
+    margin-top: 4px;
   }
   .modal_header_right {
     display: contents;
   }
   .modal_header_sp {
     width: calc(100% - 115px);
-    padding: 16px 12px 0 12px;
+    padding: 0 12px;
   }
   .modal_name {
     font-size: 16px;
