@@ -116,24 +116,27 @@ function renderModals(resumes) {
                     <pre>${resume.WorkHistory}</pre>
                 </div>
 
+                <!-- modal_post直下にCMS機能が入るイメージ -->
                 <p class="modal_title_sub">面接動画</p>
-  
-                  <!-- modal_post直下にCMS機能が入るイメージ -->
-                  <div class="modal_post">
-                      <div class="center">
-                          <video src="modal_movie.mp4" playsinline controls></video>
-                      </div>
-                  </div>
-                  <p class="modal_title_sub">GSSからのコメント</p>
-                  
-                  <!-- modal_post直下にCMS機能が入るイメージ -->
-                  <div class="modal_post">
-                      <p>${resume.Comment}</p>
-                      <!-- コードテスト結果のランクテキストカラーは、CSSを4種用意しています。 -->
-                      <div class="modal_post_code">コードテスト結果：<span class="textC_purple">${
-                        resume.CodeExam
-                      }</span></div>
-                  </div>
+                <div class="modal_post">
+                    <div class="center">
+                    ${
+                      resume.InterviewUrl
+                        ? `<iframe style="width: 680px; height: 360px;" src="${resume.InterviewUrl}" width="640" height="480" allow="autoplay"></iframe>`
+                        : `<img src="./img/default_interview_video.png">`
+                    }
+                    </div>
+                </div>
+                
+                <!-- modal_post直下にCMS機能が入るイメージ -->
+                <p class="modal_title_sub">GSSからのコメント</p>
+                <div class="modal_post">
+                    <p>${resume.Comment}</p>
+                    <!-- コードテスト結果のランクテキストカラーは、CSSを4種用意しています。 -->
+                    <div class="modal_post_code">コードテスト結果：<span class="textC_purple">${
+                      resume.CodeExam
+                    }</span></div>
+                </div>
             </div>
         </div>
 
