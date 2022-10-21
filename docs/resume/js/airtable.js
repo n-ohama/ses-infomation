@@ -67,7 +67,9 @@ function renderModals(resumes) {
       <div class="modal_content">
           <header class="modal_header">
             <button class="modal_header_close_btn js-modalHeadercloseBtn"></button>
-            <figure class="modal_figure"><img src="${resume.picture}" alt=""></figure>
+            <figure class="modal_figure"><img src="${
+              resume.picture ? resume.picture : './img/user_default_image.png'
+            }" alt="${resume.Name}"></figure>
             <div class="modal_header_right">
                 <div class="modal_header_sp">
                     <p class="modal_name">
@@ -174,7 +176,9 @@ function renderResumes(resumes) {
     <li class="card" data-js-num="${index + 1}">
     <div class="card_header">
         <figure class="card_figure">
-          <img src="${resume.picture}" alt="">
+          <img src="${
+            resume.picture ? resume.picture : './img/user_default_image.png'
+          }" alt="${resume.Name}">
         </figure>
         <div class="card_header_right">
             <h2 class="card_name">
