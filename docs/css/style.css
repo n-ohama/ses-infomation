@@ -273,9 +273,6 @@ select.languageSwitcher option{
     font-size: 1.528vw;
     margin-bottom: 1.32vw;
   }
-  .mv_btn .btn-bubble::before, .btn-bubble::after{
-    width: 3.1945vw;
-  }
   .mv_btn .btn{
     font-size: 1.95vw;
     padding: 1.736vw 10.833vw;
