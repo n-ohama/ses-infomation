@@ -41,7 +41,7 @@ function renderModals(resumes) {
 
   $(resumes).each((index, resume) => {
     resume.salary = _.floor(resume.Salary / 10000, 1);
-    resume.picture = resume.Picture[0].url;
+    resume.picture = resume.Picture ? resume.Picture[0].url : null;
     resume.skills = _.reduce(
       resume.Skills,
       (m, skill, key) => {
@@ -161,7 +161,7 @@ function renderResumes(resumes) {
 
   $(resumes).each((index, resume) => {
     resume.salary = _.floor(resume.Salary / 10000, 1);
-    resume.picture = resume.Picture[0].url;
+    resume.picture = resume.Picture ? resume.Picture[0].url : null;
     resume.skils = _.reduce(
       resume.Skills,
       (m, skill, key) => {
