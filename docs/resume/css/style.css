@@ -837,6 +837,9 @@ Modal
   color: var(--color_red-vivid);
   border-color: var(--color_red-vivid);
 }
+.modal_post_interview_video {
+  padding-top: 30px;
+}
 
 @media screen and (max-width: 1169px) {
   /* 共通・ヘルパー */
