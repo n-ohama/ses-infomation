@@ -131,16 +131,19 @@ function renderModals(resumes) {
                 </div>
                 
                 <!-- modal_post直下にCMS機能が入るイメージ -->
-                <p class="modal_title_sub">GSSからのコメント</p>
-                <div class="modal_post">
-                    <p>${resume.Comment}</p>
-                    <!-- コードテスト結果のランクテキストカラーは、CSSを4種用意しています。 -->
-                    ${
-                      resume.CodeExam !== '未実施'
-                        ? `<div class="modal_post_code">コードテスト結果：<span class="textC_purple">${resume.CodeExam}</span></div>`
-                        : ``
-                    }
-                </div>
+                ${
+                  resume.Comment
+                    ? `<p class="modal_title_sub">GSSからのコメント</p>
+                      <div class="modal_post">
+                          <p>${resume.Comment}</p>
+                          ${
+                            resume.CodeExam !== '未実施'
+                              ? `<div class="modal_post_code">コードテスト結果：<span class="textC_purple">${resume.CodeExam}</span></div>`
+                              : ''
+                          }
+                      </div>`
+                    : ``
+                }
             </div>
         </div>
 
