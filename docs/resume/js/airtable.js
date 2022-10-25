@@ -135,9 +135,11 @@ function renderModals(resumes) {
                 <div class="modal_post">
                     <p>${resume.Comment}</p>
                     <!-- コードテスト結果のランクテキストカラーは、CSSを4種用意しています。 -->
-                    <div class="modal_post_code">コードテスト結果：<span class="textC_purple">${
-                      resume.CodeExam
-                    }</span></div>
+                    ${
+                      resume.CodeExam !== '未実施'
+                        ? `<div class="modal_post_code">コードテスト結果：<span class="textC_purple">${resume.CodeExam}</span></div>`
+                        : ``
+                    }
                 </div>
             </div>
         </div>
