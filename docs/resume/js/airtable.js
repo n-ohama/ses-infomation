@@ -120,7 +120,7 @@ function renderModals(resumes) {
 
                 <!-- modal_post直下にCMS機能が入るイメージ -->
                 <p class="modal_title_sub">面接動画</p>
-                <div class="modal_post">
+                <div class="modal_post modal_post_interview_video">
                     <div class="center">
                     ${
                       resume.InterviewUrl
