@@ -73,7 +73,9 @@ function renderModals(resumes) {
             <div class="modal_header_right">
                 <div class="modal_header_sp">
                     <p class="modal_name">
-                      ${resume.Name}<span class="modal_name_age"> (${resume.Age}歳)</span>
+                      ${resume.Name}<span class="modal_name_age"> (${resume.Age}歳) ${
+      resume.Gender
+    }</span>
                     </p>
                     <div class="modal_meta">
                         <div class="modal_meta_box">
@@ -187,7 +189,9 @@ function renderResumes(resumes) {
         </figure>
         <div class="card_header_right">
             <h2 class="card_name">
-              ${resume.Name}<br><span class="card_name_age">(${resume.Age}歳)</span>
+              ${resume.Name}<br><span class="card_name_age">(${resume.Age}歳) ${
+      resume.Gender
+    }</span>
             </h2>
             <div class="card_rank">
                 <img src="img/badge_gold.png" alt="gold">
