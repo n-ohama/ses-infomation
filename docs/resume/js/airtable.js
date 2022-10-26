@@ -72,7 +72,11 @@ function renderModals(resumes) {
           <header class="modal_header">
             <button class="modal_header_close_btn js-modalHeadercloseBtn"></button>
             <figure class="modal_figure"><img src="${
-              resume.picture ? resume.picture : './img/user_default_image.png'
+              resume.picture
+                ? resume.picture
+                : resume.Gender === '男性'
+                ? './img/user_default_image.png'
+                : './img/female_user_default_image.png'
             }" alt="${resume.Name}"></figure>
             <div class="modal_header_right">
                 <div class="modal_header_sp">
@@ -200,7 +204,11 @@ function renderResumes(resumes) {
     <div class="card_header">
         <figure class="card_figure">
           <img src="${
-            resume.picture ? resume.picture : './img/user_default_image.png'
+            resume.picture
+              ? resume.picture
+              : resume.Gender === '男性'
+              ? './img/user_default_image.png'
+              : './img/female_user_default_image.png'
           }" alt="${resume.Name}">
         </figure>
         <div class="card_header_right">
