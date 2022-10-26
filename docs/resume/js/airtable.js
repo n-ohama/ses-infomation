@@ -42,23 +42,27 @@ function renderModals(resumes) {
   $(resumes).each((index, resume) => {
     resume.salary = _.floor(resume.Salary / 10000, 1);
     resume.picture = resume.Picture ? resume.Picture[0].url : null;
-    resume.skills = _.reduce(
-      resume.Skills,
-      (m, skill, key) => {
-        return (
-          m + `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
-        );
-      },
-      '',
-    );
+    resume.skills = resume.Skills
+      ? _.reduce(
+          resume.Skills,
+          (m, skill, key) => {
+            return (
+              m + `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
+            );
+          },
+          '',
+        )
+      : `<li class="badge_item badge_light_9">調整中</li>`;
 
-    resume.fw = _.reduce(
-      resume.Framework,
-      (m, fw, key) => {
-        return m + `<li class="badge_item ${badgeLightColor[fw.length]}">${fw}</li>`;
-      },
-      '',
-    );
+    resume.fw = resume.Framework
+      ? _.reduce(
+          resume.Framework,
+          (m, fw, key) => {
+            return m + `<li class="badge_item ${badgeLightColor[fw.length]}">${fw}</li>`;
+          },
+          '',
+        )
+      : `<li class="badge_item badge_light_9">調整中</li>`;
 
     $('#render-modals').append(`
     
@@ -73,14 +77,18 @@ function renderModals(resumes) {
             <div class="modal_header_right">
                 <div class="modal_header_sp">
                     <p class="modal_name">
-                      ${resume.Name}<span class="modal_name_age"> (${resume.Age}歳) ${
+                      ${
+                        resume.Name ? resume.Name : '名前'
+                      }<span class="modal_name_age"> (${resume.Age}歳) ${
       resume.Gender
     }</span>
                     </p>
                     <div class="modal_meta">
                         <div class="modal_meta_box">
                             <img src="img/badge_gold.png" alt="gold">
-                            <p class="modal_meta_text">${resume.Rank}</p>
+                            <p class="modal_meta_text">${
+                              resume.Rank ? resume.Rank : 'ランク'
+                            }</p>
                         </div>
                         <div class="modal_meta_box">
                             <img src="img/icon_area.svg" alt="">
@@ -88,7 +96,7 @@ function renderModals(resumes) {
                         </div>
                         <p class="modal_price"><span class="modal_price_big">
                           <span class="pc">ご契約金額：</span>
-                          ${resume.salary}万円</span> / 月
+                          ${resume.salary ? `${resume.salary}万円</span> / 月` : '金額'}
                         </p>
                     </div>
                 </div>
@@ -96,9 +104,13 @@ function renderModals(resumes) {
                     <div class="badge_box">
                       <p class="badge_title">ポジション</p>
                       <ul class="badge_list badge_list-hasPositon">
-                        <li class="badge_item ${
-                          badgePositionTagColor[resume.Position]
-                        }">${resume.Position}</li>
+                          ${
+                            resume.Position
+                              ? `<li class="badge_item ${
+                                  badgePositionTagColor[resume.Position]
+                                }">${resume.Position}</li>`
+                              : `<li class="badge_item badge_dark_10">調整中</li>`
+                          }
                       </ul>
                     </div>
                     <div class="badge_box">
@@ -117,7 +129,11 @@ function renderModals(resumes) {
             <div class="modal_postWrap">
                 <p class="modal_title_sub">経歴</p>
                 <div class="modal_post">
-                    <pre>${resume.WorkHistory}</pre>
+                  ${
+                    resume.WorkHistory
+                      ? `<pre>${resume.WorkHistory}</pre>`
+                      : '現在調整中です'
+                  }  
                 </div>
 
                 <!-- modal_post直下にCMS機能が入るイメージ -->
@@ -189,16 +205,18 @@ function renderResumes(resumes) {
         </figure>
         <div class="card_header_right">
             <h2 class="card_name">
-              ${resume.Name}<br><span class="card_name_age">(${resume.Age}歳) ${
-      resume.Gender
-    }</span>
+            ${resume.Name ? resume.Name : '名前'}<br><span class="card_name_age">(${
+      resume.Age
+    }歳) ${resume.Gender}</span>
             </h2>
             <div class="card_rank">
                 <img src="img/badge_gold.png" alt="gold">
-                <p class="card_rank_text">${resume.Rank}</p>
+                <p class="card_rank_text">${resume.Rank ? resume.Rank : 'ランク'}</p>
             </div>
             <p class="card_price">
-              <span class="card_price_big">${resume.salary}万円</span> / 月</p>
+              <span class="card_price_big">${
+                resume.salary ? `${resume.salary}万円</span> / 月` : '金額'
+              }</p>
         </div>
     </div>
     <div class="card_body">
