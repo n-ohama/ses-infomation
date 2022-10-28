@@ -42,27 +42,32 @@ function renderModals(resumes) {
   $(resumes).each((index, resume) => {
     resume.salary = _.floor(resume.Salary / 10000, 1);
     resume.picture = resume.Picture ? resume.Picture[0].url : null;
-    resume.skills = resume.Skills
-      ? _.reduce(
-          resume.Skills,
-          (m, skill, key) => {
-            return (
-              m + `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
-            );
-          },
-          '',
-        )
-      : `<li class="badge_item badge_light_9">調整中</li>`;
+    resume.skills =
+      resume.Skills.length > 0
+        ? _.reduce(
+            resume.Skills,
+            (m, skill, key) => {
+              return (
+                m +
+                `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
+              );
+            },
+            '',
+          )
+        : `<li class="badge_item badge_light_9">調整中</li>`;
 
-    resume.fw = resume.Framework
-      ? _.reduce(
-          resume.Framework,
-          (m, fw, key) => {
-            return m + `<li class="badge_item ${badgeLightColor[fw.length]}">${fw}</li>`;
-          },
-          '',
-        )
-      : `<li class="badge_item badge_light_9">調整中</li>`;
+    resume.fw =
+      resume.Framework.length > 0
+        ? _.reduce(
+            resume.Framework,
+            (m, fw, key) => {
+              return (
+                m + `<li class="badge_item ${badgeLightColor[fw.length]}">${fw}</li>`
+              );
+            },
+            '',
+          )
+        : `<li class="badge_item badge_light_9">調整中</li>`;
 
     $('#render-modals').append(`
     
@@ -82,16 +87,16 @@ function renderModals(resumes) {
                 <div class="modal_header_sp">
                     <p class="modal_name">
                       ${
-                        resume.Name ? resume.Name : '名前'
-                      }<span class="modal_name_age"> (${resume.Age}歳) ${
-      resume.Gender
-    }</span>
+                        resume.Name ? resume.Name : '名前（調整中）'
+                      }<span class="modal_name_age"> ${
+      resume.Age ? `(${resume.Age}歳)` : ''
+    } ${resume?.Gender ?? ''}</span>
                     </p>
                     <div class="modal_meta">
                         <div class="modal_meta_box">
                             <img src="img/badge_gold.png" alt="gold">
                             <p class="modal_meta_text">${
-                              resume.Rank ? resume.Rank : 'ランク'
+                              resume.Rank ? resume.Rank : 'ランク（調整中）'
                             }</p>
                         </div>
                         <div class="modal_meta_box">
@@ -100,7 +105,7 @@ function renderModals(resumes) {
                         </div>
                         <p class="modal_price"><span class="modal_price_big">
                           <span class="pc">ご契約金額：</span>
-                          ${resume.salary ? `${resume.salary}万円</span> / 月` : '金額'}
+                          ${resume.salary ? `${resume.salary}万円</span> / 月` : '調整中'}
                         </p>
                     </div>
                 </div>
@@ -136,8 +141,8 @@ function renderModals(resumes) {
                   ${
                     resume.WorkHistory
                       ? `<pre>${resume.WorkHistory}</pre>`
-                      : '現在調整中です'
-                  }  
+                      : '※現在調整中です'
+                  }
                 </div>
 
                 <!-- modal_post直下にCMS機能が入るイメージ -->
@@ -189,15 +194,19 @@ function renderResumes(resumes) {
   $(resumes).each((index, resume) => {
     resume.salary = _.floor(resume.Salary / 10000, 1);
     resume.picture = resume.Picture ? resume.Picture[0].url : null;
-    resume.skils = _.reduce(
-      resume.Skills,
-      (m, skill, key) => {
-        return (
-          m + `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
-        );
-      },
-      '',
-    );
+    resume.skils =
+      resume.Skills.length > 0
+        ? _.reduce(
+            resume.Skills,
+            (m, skill, key) => {
+              return (
+                m +
+                `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
+              );
+            },
+            '',
+          )
+        : `<li class="badge_item badge_light_9">調整中</li>`;
 
     $('#render-resumes').append(`
     <li class="card" data-js-num="${index + 1}">
@@ -213,17 +222,21 @@ function renderResumes(resumes) {
         </figure>
         <div class="card_header_right">
             <h2 class="card_name">
-            ${resume.Name ? resume.Name : '名前'}<br><span class="card_name_age">(${
-      resume.Age
-    }歳) ${resume.Gender}</span>
+            ${
+              resume.Name ? resume.Name : '名前（調整中）'
+            }<br><span class="card_name_age">${resume.Age ? `(${resume.Age}歳)` : ''} ${
+      resume?.Gender ?? ''
+    }</span>
             </h2>
             <div class="card_rank">
                 <img src="img/badge_gold.png" alt="gold">
-                <p class="card_rank_text">${resume.Rank ? resume.Rank : 'ランク'}</p>
+                <p class="card_rank_text">${
+                  resume.Rank ? resume.Rank : 'ランク（調整中）'
+                }</p>
             </div>
             <p class="card_price">
               <span class="card_price_big">${
-                resume.salary ? `${resume.salary}万円</span> / 月` : '金額'
+                resume.salary ? `${resume.salary}万円</span> / 月` : '金額（調整中）'
               }</p>
         </div>
     </div>
@@ -244,7 +257,11 @@ function renderResumes(resumes) {
         </div>
         <div class="card_body_bottom">
             <h3 class="card_title_sub">経歴</h3>
-            <p class="card_desc">${resume.WorkHistory}</p>
+            ${
+              resume.WorkHistory
+                ? `<p class="card_desc">${resume.WorkHistory}</p>`
+                : '※現在調整中です'
+            }
         </div>
     </div>
     </li>
