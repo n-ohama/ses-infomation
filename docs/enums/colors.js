@@ -49,4 +49,8 @@ const badgePositionTagColor = {
   ゲームデベロッパー: 'badge_dark_8',
   サーバーエンジニア: 'badge_dark_9',
   セキュリテイエンジニア: 'badge_dark_10',
+  アプリデベロッパー: 'badge_dark_7',
+  ゲームデベロッパー: 'badge_dark_8',
+  サーバーエンジニア: 'badge_dark_9',
+  セキュリテイエンジニア: 'badge_dark_10',
 };
