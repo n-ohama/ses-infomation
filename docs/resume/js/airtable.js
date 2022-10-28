@@ -42,32 +42,27 @@ function renderModals(resumes) {
   $(resumes).each((index, resume) => {
     resume.salary = _.floor(resume.Salary / 10000, 1);
     resume.picture = resume.Picture ? resume.Picture[0].url : null;
-    resume.skills =
-      resume.Skills.length > 0
-        ? _.reduce(
-            resume.Skills,
-            (m, skill, key) => {
-              return (
-                m +
-                `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
-              );
-            },
-            '',
-          )
-        : `<li class="badge_item badge_light_9">調整中</li>`;
+    resume.skills = resume.Skills
+      ? _.reduce(
+          resume.Skills,
+          (m, skill, key) => {
+            return (
+              m + `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
+            );
+          },
+          '',
+        )
+      : `<li class="badge_item badge_light_9">調整中</li>`;
 
-    resume.fw =
-      resume.Framework.length > 0
-        ? _.reduce(
-            resume.Framework,
-            (m, fw, key) => {
-              return (
-                m + `<li class="badge_item ${badgeLightColor[fw.length]}">${fw}</li>`
-              );
-            },
-            '',
-          )
-        : `<li class="badge_item badge_light_9">調整中</li>`;
+    resume.fw = resume.Framework
+      ? _.reduce(
+          resume.Framework,
+          (m, fw, key) => {
+            return m + `<li class="badge_item ${badgeLightColor[fw.length]}">${fw}</li>`;
+          },
+          '',
+        )
+      : `<li class="badge_item badge_light_9">調整中</li>`;
 
     $('#render-modals').append(`
     
@@ -194,19 +189,17 @@ function renderResumes(resumes) {
   $(resumes).each((index, resume) => {
     resume.salary = _.floor(resume.Salary / 10000, 1);
     resume.picture = resume.Picture ? resume.Picture[0].url : null;
-    resume.skils =
-      resume.Skills.length > 0
-        ? _.reduce(
-            resume.Skills,
-            (m, skill, key) => {
-              return (
-                m +
-                `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
-              );
-            },
-            '',
-          )
-        : `<li class="badge_item badge_light_9">調整中</li>`;
+    resume.skils = resume.Skills
+      ? _.reduce(
+          resume.Skills,
+          (m, skill, key) => {
+            return (
+              m + `<li class="badge_item ${badgeLightColor[skill.length]}">${skill}</li>`
+            );
+          },
+          '',
+        )
+      : `<li class="badge_item badge_light_9">調整中</li>`;
 
     $('#render-resumes').append(`
     <li class="card" data-js-num="${index + 1}">
