@@ -100,7 +100,11 @@ function renderModals(resumes) {
                         </div>
                         <p class="modal_price"><span class="modal_price_big">
                           <span class="pc">ご契約金額：</span>
-                          ${resume.salary ? `${resume.salary}万円</span> / 月` : '調整中'}
+                          ${
+                            resume.salary
+                              ? `${resume.salary}万円 (税抜)</span> / 月`
+                              : '調整中'
+                          }
                         </p>
                     </div>
                 </div>
@@ -229,7 +233,9 @@ function renderResumes(resumes) {
             </div>
             <p class="card_price">
               <span class="card_price_big">${
-                resume.salary ? `${resume.salary}万円</span> / 月` : '金額（調整中）'
+                resume.salary
+                  ? `${resume.salary}万円 (税抜)</span> / 月`
+                  : '金額（調整中）'
               }</p>
         </div>
     </div>
