@@ -82,7 +82,7 @@ function renderModals(resumes) {
                 <div class="modal_header_sp">
                     <p class="modal_name">
                       ${
-                        resume.Name ? resume.Name : '名前（調整中）'
+                        resume.Nickname ? resume.Nickname : '名前（調整中）'
                       }<span class="modal_name_age"> ${
       resume.Age ? `(${resume.Age}歳)` : ''
     } ${resume?.Gender ?? ''}</span>
