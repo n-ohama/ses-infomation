@@ -216,7 +216,7 @@ function renderResumes(resumes) {
         <div class="card_header_right">
             <h2 class="card_name">
             ${
-              resume.Name ? resume.Name : '名前（調整中）'
+              resume.Nickname ? resume.Nickname : '名前（調整中）'
             }<br><span class="card_name_age">${resume.Age ? `(${resume.Age}歳)` : ''} ${
       resume?.Gender ?? ''
     }</span>
