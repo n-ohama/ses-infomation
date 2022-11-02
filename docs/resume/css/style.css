@@ -657,6 +657,10 @@ List
 .card_desc {
   padding: 8px 0;
 }
+.badge_item--default_color {
+  color: #494949 !important;
+  font-weight: normal !important;
+}
 
 /* ==============================================
 Modal

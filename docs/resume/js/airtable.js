@@ -113,7 +113,7 @@ function renderModals(resumes) {
                               ? `<li class="badge_item ${
                                   badgePositionTagColor[resume.Position]
                                 }">${resume.Position}</li>`
-                              : `<li class="badge_item badge_dark_10">調整中</li>`
+                              : `<li class="badge_item badge_item--default_color badge_light_9">調整中</li>`
                           }
                       </ul>
                     </div>
@@ -238,9 +238,13 @@ function renderResumes(resumes) {
             <div class="badge_box">
                 <p class="badge_title">ポジション</p>
                 <ul class="badge_list badge_list-hasPositon">
-                    <li class="badge_item ${badgePositionTagColor[resume.Position]}">${
-      resume.Position
-    }</li>
+                  ${
+                    resume.Position
+                      ? `<li class="badge_item ${
+                          badgePositionTagColor[resume.Position]
+                        }">${resume.Position}</li>`
+                      : `<li class="badge_item badge_item--default_color badge_light_9">調整中</li>`
+                  }
                 </ul>
             </div>
             <div class="badge_box">
