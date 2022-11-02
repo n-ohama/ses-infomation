@@ -74,9 +74,9 @@ function renderModals(resumes) {
             <figure class="modal_figure"><img src="${
               resume.picture
                 ? resume.picture
-                : resume.Gender === '男性'
-                ? './img/user_default_image.png'
-                : './img/female_user_default_image.png'
+                : resume.Gender && resume.Gender !== '男性'
+                ? './img/female_user_default_image.png'
+                : './img/user_default_image.png'
             }" alt="${resume.Name}"></figure>
             <div class="modal_header_right">
                 <div class="modal_header_sp">
@@ -212,9 +212,9 @@ function renderResumes(resumes) {
           <img src="${
             resume.picture
               ? resume.picture
-              : resume.Gender === '男性'
-              ? './img/user_default_image.png'
-              : './img/female_user_default_image.png'
+              : resume.Gender && resume.Gender !== '男性'
+              ? './img/female_user_default_image.png'
+              : './img/user_default_image.png'
           }" alt="${resume.Name}">
         </figure>
         <div class="card_header_right">
