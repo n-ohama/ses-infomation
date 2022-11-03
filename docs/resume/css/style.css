@@ -661,6 +661,10 @@ List
   color: #494949 !important;
   font-weight: normal !important;
 }
+.excluded_tax {
+  font-size: 16px;
+  font-weight: bold;
+}
 
 /* ==============================================
 Modal

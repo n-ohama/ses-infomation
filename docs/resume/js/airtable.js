@@ -102,7 +102,7 @@ function renderModals(resumes) {
                           <span class="pc">ご契約金額：</span>
                           ${
                             resume.salary
-                              ? `${resume.salary}万円 (税抜)</span> / 月`
+                              ? `${resume.salary}万円</span> <span class="excluded_tax">(税抜)</span> / 月`
                               : '調整中'
                           }
                         </p>
@@ -234,7 +234,7 @@ function renderResumes(resumes) {
             <p class="card_price">
               <span class="card_price_big">${
                 resume.salary
-                  ? `${resume.salary}万円 (税抜)</span> / 月`
+                  ? `${resume.salary}万円</span> <span class="excluded_tax">(税抜)</span> / 月`
                   : '金額（調整中）'
               }</p>
         </div>
