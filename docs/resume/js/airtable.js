@@ -19,19 +19,28 @@ function toggleModal() {
 
       // オーバーレイをクリックすると、オーバーレイとモーダルのis_showクラスを除去
       overlay.addEventListener('click', () => {
-        $('iframe').attr('src', $('iframe').attr('src'));
+        $(`#interviewVideo${index}`).attr(
+          'src',
+          $(`#interviewVideo${index}`).attr('src'),
+        );
         modal.classList.remove('is_show');
         overlay.classList.remove('is_show');
       });
       // 閉じるボタンをクリックすると、オーバーレイとモーダルのis_showクラスを除去
       modalClose.addEventListener('click', () => {
-        $('iframe').attr('src', $('iframe').attr('src'));
+        $(`#interviewVideo${index}`).attr(
+          'src',
+          $(`#interviewVideo${index}`).attr('src'),
+        );
         modal.classList.remove('is_show');
         overlay.classList.remove('is_show');
       });
       // モーダルヘッダー閉じるボタンをクリックすると、オーバーレイとモーダルのis_showクラスを除去
       modalHeadercloseBtn.addEventListener('click', () => {
-        $('iframe').attr('src', $('iframe').attr('src'));
+        $(`#interviewVideo${index}`).attr(
+          'src',
+          $(`#interviewVideo${index}`).attr('src'),
+        );
         modal.classList.remove('is_show');
         overlay.classList.remove('is_show');
       });
@@ -153,7 +162,7 @@ function renderModals(resumes) {
                     <div class="center">
                     ${
                       resume.InterviewUrl
-                        ? `<iframe style="width: 680px; height: 360px;" src="${resume.InterviewUrl}" width="640" height="480" allow="autoplay"></iframe>`
+                        ? `<iframe id="interviewVideo${index}" style="width: 680px; height: 360px;" src="${resume.InterviewUrl}" width="640" height="480" allow="autoplay"></iframe>`
                         : `<img src="./img/default_interview_video.png">`
                     }
                     </div>
