@@ -19,16 +19,19 @@ function toggleModal() {
 
       // オーバーレイをクリックすると、オーバーレイとモーダルのis_showクラスを除去
       overlay.addEventListener('click', () => {
+        $('iframe').attr('src', $('iframe').attr('src'));
         modal.classList.remove('is_show');
         overlay.classList.remove('is_show');
       });
       // 閉じるボタンをクリックすると、オーバーレイとモーダルのis_showクラスを除去
       modalClose.addEventListener('click', () => {
+        $('iframe').attr('src', $('iframe').attr('src'));
         modal.classList.remove('is_show');
         overlay.classList.remove('is_show');
       });
       // モーダルヘッダー閉じるボタンをクリックすると、オーバーレイとモーダルのis_showクラスを除去
       modalHeadercloseBtn.addEventListener('click', () => {
+        $('iframe').attr('src', $('iframe').attr('src'));
         modal.classList.remove('is_show');
         overlay.classList.remove('is_show');
       });
