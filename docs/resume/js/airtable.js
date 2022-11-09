@@ -52,7 +52,6 @@ function renderModals(resumes) {
   $('#render-modals').html('');
 
   $(resumes).each((index, resume) => {
-    console.log('modal', resume?.Check);
     if (resume?.Check) {
       resume.salary = _.floor(resume.Salary / 10000, 1);
       resume.picture = resume.Picture ? resume.Picture[0].url : null;
@@ -209,7 +208,6 @@ function renderResumes(resumes) {
   $('#number-of-list').text(_.size(resumes) + ' 名のエンジニアが見つかりました');
 
   $(resumes).each((index, resume) => {
-    console.log('card', resume.Check);
     if (resume?.Check) {
       resume.salary = _.floor(resume.Salary / 10000, 1);
       resume.picture = resume.Picture ? resume.Picture[0].url : null;
