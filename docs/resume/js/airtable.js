@@ -339,11 +339,11 @@ $.ajax({
   .done((resumes) => {
     console.log('Ajax Response', resumes);
 
-    const positions = _.uniq(_.map(resumes.data, 'Position'));
+    const positions = _.compact(_.uniq(_.map(resumes.data, 'Position')));
     const skills = _.uniq(_.map(resumes.data, 'Skills'));
     const frameworks = _.uniq(_.map(resumes.data, 'Framework'));
-    const rank = _.uniq(_.map(resumes.data, 'Rank'));
-    const skillList = _.union(skills.flat(), frameworks.flat());
+    const rank = _.compact(_.uniq(_.map(resumes.data, 'Rank')));
+    const skillList = _.compact(_.union(skills.flat(), frameworks.flat()));
 
     const positionTags = _.reduce(
       positions,
