@@ -203,6 +203,8 @@ function renderModals(resumes) {
 }
 
 function renderResumes(resumes) {
+  let resumeCount = 0;
+
   $('#render-resumes').html('');
 
   $('#number-of-list').text(_.size(resumes) + ' 名のエンジニアが見つかりました');
@@ -288,8 +290,12 @@ function renderResumes(resumes) {
       </div>
       </li>
       `);
+
+      resumeCount += 1;
     }
   });
+
+  $('#number-of-list').text(resumeCount + ' 名のエンジニアが見つかりました');
 
   renderModals(resumes);
 
