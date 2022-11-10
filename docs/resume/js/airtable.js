@@ -52,7 +52,7 @@ function renderModals(resumes) {
   $('#render-modals').html('');
 
   $(resumes).each((index, resume) => {
-    if (resume?.Check) {
+    if (resume?.Card_Display) {
       resume.salary = _.floor(resume.Salary / 10000, 1);
       resume.picture = resume.Picture ? resume.Picture[0].url : null;
       resume.skills = resume.Skills
@@ -210,7 +210,7 @@ function renderResumes(resumes) {
   $('#number-of-list').text(_.size(resumes) + ' 名のエンジニアが見つかりました');
 
   $(resumes).each((index, resume) => {
-    if (resume?.Check) {
+    if (resume?.Card_Display) {
       resume.salary = _.floor(resume.Salary / 10000, 1);
       resume.picture = resume.Picture ? resume.Picture[0].url : null;
       resume.skils = resume.Skills
