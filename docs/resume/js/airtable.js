@@ -105,7 +105,11 @@ function renderModals(resumes) {
                       </p>
                       <div class="modal_meta">
                           <div class="modal_meta_box">
-                              <img src="img/badge_gold.png" alt="gold">
+                              <img src="${
+                                resume.Rank
+                                  ? rankingList[resume.Rank]
+                                  : 'img/badge_gold.png'
+                              }" alt="gold">
                               <p class="modal_meta_text">${
                                 resume.Rank ? resume.Rank : 'ランク（調整中）'
                               }</p>
@@ -247,7 +251,9 @@ function renderResumes(resumes) {
       }</span>
               </h2>
               <div class="card_rank">
-                  <img src="img/badge_gold.png" alt="gold">
+                  <img src="${
+                    resume.Rank ? rankingList[resume.Rank] : 'img/badge_gold.png'
+                  }" alt="gold">
                   <p class="card_rank_text">${
                     resume.Rank ? resume.Rank : 'ランク（調整中）'
                   }</p>
@@ -348,7 +354,7 @@ $.ajax({
     const positions = _.compact(_.uniq(_.map(resumes.data, 'Position')));
     const skills = _.uniq(_.map(resumes.data, 'Skills'));
     const frameworks = _.uniq(_.map(resumes.data, 'Framework'));
-    const rank = _.compact(_.uniq(_.map(resumes.data, 'Rank')));
+    const rank = rankingList;
     const skillList = _.compact(_.union(skills.flat(), frameworks.flat()));
 
     const positionTags = _.reduce(
@@ -363,7 +369,7 @@ $.ajax({
     const rankTags = _.reduce(
       rank,
       (m, p, key) => {
-        return m + `<option value="${p}">${p}</option>`;
+        return m + `<option value="${key}">${key}</option>`;
       },
       '<option value="all" selected>全てのランク</option>',
     );
