@@ -65,6 +65,7 @@ createApp({
       );
     } else {
       this.isShowLoginPage = true;
+      document.querySelector('.js-filter_btn-open').style.display = 'none';
     }
   },
   methods: {
@@ -74,6 +75,7 @@ createApp({
         this.password,
         (resumes) => {
           this.isShowLoginPage = false;
+          document.querySelector('.js-filter_btn-open').style.display = 'block';
           console.log('Success to login', resumes);
         },
         () => {
