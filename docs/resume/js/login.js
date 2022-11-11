@@ -66,6 +66,7 @@ createApp({
     } else {
       this.isShowLoginPage = true;
       document.querySelector('.js-filter_btn-open').style.display = 'none';
+      document.querySelector('.resume-list-component').style.display = 'none';
     }
   },
   methods: {
@@ -76,6 +77,7 @@ createApp({
         (resumes) => {
           this.isShowLoginPage = false;
           document.querySelector('.js-filter_btn-open').style.display = 'block';
+          document.querySelector('.resume-list-component').style.display = 'block';
           console.log('Success to login', resumes);
         },
         () => {
