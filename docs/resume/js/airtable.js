@@ -174,6 +174,7 @@ function renderModals(resumes) {
                           : `<img src="./img/default_interview_video.png">`
                       }
                       </div>
+                      <a class="modal_meta_text_center" href="https://otter.ai/u/abS2AjB95TRwumYKLsMuysxu0So?f=%2Fmy-notes&tab=summary">面接内容書き起こし</a>
                   </div>
                   
                   <!-- modal_post直下にCMS機能が入るイメージ -->
