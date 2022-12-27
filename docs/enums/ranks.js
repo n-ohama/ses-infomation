@@ -8,4 +8,5 @@ const rankingList = {
   ミドル: '../img/badge/middle_badge.png',
   'ジュニア+': '../img/badge/junior_badge.png',
   ジュニア: '../img/badge/junior_badge.png',
+  トレーニー: '../img/badge/trainee_badge.png',
 };
