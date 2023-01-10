@@ -449,7 +449,7 @@ List
   width: 12px;
   height: 13px;
   right: 13px;
-  top: 42px;
+  top: 19px;
 }
 .filter_col select {
   border-color: #b9c7db;
@@ -457,6 +457,9 @@ List
   color: #7e7b7b;
   width: 100%;
   background-color: #fff;
+}
+.filter_col select audio {
+  color: #000;
 }
 .filter_col select option {
   color: #000;

@@ -207,14 +207,22 @@ function renderModals(resumes) {
   });
 }
 
+let abc = 1;
+
+function changePage(param) {
+  abc = param;
+}
+
 function renderResumes(resumes) {
+  console.log(resumes);
+  const resumes1 = resumes.slice(40);
   let resumeCount = 0;
 
   $('#render-resumes').html('');
 
   $('#number-of-list').text(_.size(resumes) + ' 名のエンジニアが見つかりました');
 
-  $(resumes).each((index, resume) => {
+  $(resumes1).each((index, resume) => {
     if (resume?.Card_Display) {
       resume.salary = _.floor(resume.Salary / 10000, 1);
       resume.picture = resume.Picture ? resume.Picture[0].url : null;
@@ -350,13 +358,12 @@ $.ajax({
   data: {},
 })
   .done((resumes) => {
-    console.log('Ajax Response', resumes);
-
     const positions = _.compact(_.uniq(_.map(resumes.data, 'Position')));
     const skills = _.uniq(_.map(resumes.data, 'Skills'));
     const frameworks = _.uniq(_.map(resumes.data, 'Framework'));
     const rank = rankingList;
     const skillList = _.compact(_.union(skills.flat(), frameworks.flat()));
+    console.log('abbbbcccddd', _.map(resumes.data, 'Position'), resumes.data);
 
     const positionTags = _.reduce(
       positions,
