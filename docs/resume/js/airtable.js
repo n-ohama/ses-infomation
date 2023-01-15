@@ -1,3 +1,11 @@
+let pageNum = 1;
+const query = location.search;
+pageNum = Number(query.replace('?page=', ''));
+
+if (pageNum === 0) {
+  pageNum = 1;
+}
+
 function toggleModal() {
   // モーダル用
   const elems = document.querySelectorAll('.card');
@@ -207,15 +215,10 @@ function renderModals(resumes) {
   });
 }
 
-let abc = 1;
-
-function changePage(param) {
-  abc = param;
-}
-
 function renderResumes(resumes) {
-  console.log(resumes);
-  const resumes1 = resumes.slice(40);
+  const resumes1 = resumes
+    .filter((item) => item.Card_Display)
+    .slice((pageNum - 1) * 12, pageNum * 12);
   let resumeCount = 0;
 
   $('#render-resumes').html('');
